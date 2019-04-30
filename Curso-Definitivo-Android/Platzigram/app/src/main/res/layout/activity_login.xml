@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,6 +68,7 @@
 
                 <Button
                     android:id="@+id/login"
+                    android:onClick="login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_button_login"
