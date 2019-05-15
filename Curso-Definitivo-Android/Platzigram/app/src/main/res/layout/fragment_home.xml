@@ -21,6 +21,8 @@
 
         <include layout="@layout/cardview_picture"/>
 
+        <include layout="@layout/cardview_picture"/>
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
