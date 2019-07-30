@@ -50,7 +50,6 @@ public class ContainerActivity extends AppCompatActivity {
                                 break;
 
                         }
-
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                 .disallowAddToBackStack().commit();

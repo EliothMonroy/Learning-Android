@@ -14,8 +14,6 @@
         android:layout_marginBottom="@dimen/bottombar_height"
         >
 
-
-
     </FrameLayout>
 
     <include layout="@layout/bottombar"/>
