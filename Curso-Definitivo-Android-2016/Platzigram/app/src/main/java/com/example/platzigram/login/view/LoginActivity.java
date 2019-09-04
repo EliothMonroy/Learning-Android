@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public boolean validateInputs() {
         return !(inputUsername.getText()==null || inputPassword.getText()==null || inputUsername.getText().toString().equals("") || inputPassword.getText().toString().equals(""));
     }
-
+    
     @Override
     public void goCreateAccount(){
         Intent intent=new Intent(this, CreateAccountActivity.class);
@@ -96,5 +96,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void loginError(String error) {
         Toast.makeText(getApplicationContext(),error,Toast.LENGTH_LONG).show();
+    }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loginPresenter.onStart();
+    }
+    
+    @Override
+    protected void onStop() {
+        super.onStop();
+        loginPresenter.onStop();
     }
 }

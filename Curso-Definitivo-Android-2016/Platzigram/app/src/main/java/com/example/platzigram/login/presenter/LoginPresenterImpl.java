@@ -1,5 +1,7 @@
 package com.example.platzigram.login.presenter;
 
+import android.app.Activity;
+
 import com.example.platzigram.login.interactor.LoginInteractor;
 import com.example.platzigram.login.interactor.LoginInteractorImpl;
 import com.example.platzigram.login.view.LoginView;
@@ -33,5 +35,20 @@ public class LoginPresenterImpl implements LoginPresenter {
         loginView.enableInputs();
         loginView.hideProgressBar();
         loginView.loginError(error);
+    }
+    
+    @Override
+    public void onStart() {
+        loginInteractor.onStart();
+    }
+    
+    @Override
+    public void onStop() {
+        loginInteractor.onStop();
+    }
+    
+    @Override
+    public Activity getActivity() {
+        return (Activity)loginView;
     }
 }

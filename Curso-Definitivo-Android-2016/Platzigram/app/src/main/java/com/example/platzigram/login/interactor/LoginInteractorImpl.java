@@ -28,4 +28,19 @@ public class LoginInteractorImpl implements LoginInteractor {
     public void loginFailed(String error) {
         loginPresenter.loginFailed(error);
     }
+    
+    @Override
+    public void onStart() {
+        loginRepository.onStart();
+    }
+    
+    @Override
+    public void onStop() {
+        loginRepository.onStop();
+    }
+    
+    @Override
+    public LoginPresenter getPresenter() {
+        return loginPresenter;
+    }
 }
