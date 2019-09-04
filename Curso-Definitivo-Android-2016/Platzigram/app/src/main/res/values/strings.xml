@@ -20,6 +20,16 @@
     <string name="tab_home">Inicio</string>
     <string name="tab_profile">Yo</string>
     <string name="hello_blank_fragment">Hello</string>
+    <string name="title_fragment_home">Home</string>
+    <string name="dummy_number">10</string>
+    <string name="second_word_detail">likes</string>
+    <string name="tittle_image_detail">Just having drinks</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, so sed, molestie aliquam est. Nam sed ex vel sem fermentum varius. Duis malesuada lobortis tincidunt. Nam mattis nunc quis arcu ultrices viverra ut vulputate enim. Nam et libero sollicitudin, dapibus lacus ac, ullamcorper purus. Pellentesque vitae leo eget odio dictum aliquam at a ligula.</string>
+    <string name="transitionname_picture">transitionname_picture</string>
+    <string name="login_invalid">Please fill both username and password</string>
+    <string name="hint_post_title">Tittle</string>
+    <string name="hint_post_description">Description</string>
+    <string name="text_button_create_post">Create post</string>
 
 
 </resources>
