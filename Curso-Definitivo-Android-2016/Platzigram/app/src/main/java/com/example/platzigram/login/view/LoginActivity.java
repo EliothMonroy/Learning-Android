@@ -1,9 +1,18 @@
 package com.example.platzigram.login.view;
 
 import android.content.Intent;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -15,6 +24,8 @@ import com.example.platzigram.login.presenter.LoginPresenter;
 import com.example.platzigram.login.presenter.LoginPresenterImpl;
 import com.example.platzigram.view.ContainerActivity;
 
+import java.util.Arrays;
+
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private TextInputEditText inputUsername, inputPassword;
@@ -22,7 +33,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private ProgressBar progressBarLogin;
     private LoginPresenter loginPresenter;
     private TextView textViewCreateAccount;
-
+    private CallbackManager callbackManager;
+    private LoginButton loginButton;
+    private static final String EMAIL = "email";
+    private String TAG="LoginActivity";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +65,43 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
         hideProgressBar();
+    
+        callbackManager = CallbackManager.Factory.create();
+    
+        
+        loginButton =  findViewById(R.id.loginButtonFB);
+        loginButton.setReadPermissions(Arrays.asList(EMAIL));
+        // If you are using in a fragment, call loginButton.setFragment(this);
+    
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+                Log.w(TAG,"Facebook login success token: "+loginResult.getAccessToken().getToken());
+            }
+        
+            @Override
+            public void onCancel() {
+                // App code
+                Log.w(TAG,"Facebook login unsuccessful cancel");
+            }
+        
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Log.e(TAG,"Facebook login ERROR: "+exception.toString());
+            }
+        });
+        
     }
-
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode,resultCode,data);
+    }
+    
     @Override
     public boolean validateInputs() {
         return !(inputUsername.getText()==null || inputPassword.getText()==null || inputUsername.getText().toString().equals("") || inputPassword.getText().toString().equals(""));

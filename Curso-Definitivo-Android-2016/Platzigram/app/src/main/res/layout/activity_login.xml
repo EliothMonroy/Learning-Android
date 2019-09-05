@@ -75,6 +75,12 @@
                     android:theme="@style/RaisedButtonDark"/>
                     <!--android:background="@drawable/border_button"-->
 
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/loginButtonFB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
