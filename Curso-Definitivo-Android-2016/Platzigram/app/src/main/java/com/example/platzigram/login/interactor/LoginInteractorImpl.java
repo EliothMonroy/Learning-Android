@@ -20,6 +20,11 @@ public class LoginInteractorImpl implements LoginInteractor {
     }
     
     @Override
+    public void signInFacebook(String token) {
+        loginRepository.signInFacebook(token);
+    }
+    
+    @Override
     public void loginSuccess() {
         loginPresenter.loginSuccess();
     }

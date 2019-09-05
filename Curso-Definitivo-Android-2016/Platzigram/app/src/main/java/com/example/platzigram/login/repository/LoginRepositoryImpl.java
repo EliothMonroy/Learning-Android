@@ -8,7 +8,10 @@ import androidx.annotation.NonNull;
 import com.example.platzigram.login.interactor.LoginInteractor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -41,6 +44,22 @@ public class LoginRepositoryImpl implements LoginRepository {
     }
     
     @Override
+    public void signInFacebook(String token) {
+        AuthCredential authCredential= FacebookAuthProvider.getCredential(token);
+        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Log.w(TAG,"Inicio sesión con facebook exitoso");
+                    loginInteractor.loginSuccess();
+                }else{
+                    loginInteractor.loginFailed("Ocurrio el siguiente error: "+task.getException().toString());
+                }
+            }
+        });
+    }
+    
+    @Override
     public void startFirebase() {
         //Obtenemos una instancia de firebase a partir del json
         firebaseAuth=FirebaseAuth.getInstance();
@@ -50,6 +69,7 @@ public class LoginRepositoryImpl implements LoginRepository {
                 FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                 if(firebaseUser!=null){
                     Log.w(TAG,"Usuario loggeado: "+firebaseUser.getEmail());
+                    loginInteractor.loginSuccess();
                 }else{
                     Log.w(TAG,"Usuario  no loggeado");
                 }

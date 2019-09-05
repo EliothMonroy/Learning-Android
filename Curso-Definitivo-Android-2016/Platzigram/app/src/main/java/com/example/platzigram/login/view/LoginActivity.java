@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             public void onSuccess(LoginResult loginResult) {
                 // App code
                 Log.w(TAG,"Facebook login success token: "+loginResult.getAccessToken().getToken());
+                loginPresenter.signInFacebook(loginResult.getAccessToken().getToken());
             }
         
             @Override

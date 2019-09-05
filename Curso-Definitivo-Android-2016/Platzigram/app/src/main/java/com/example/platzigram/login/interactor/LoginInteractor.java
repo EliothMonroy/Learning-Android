@@ -4,6 +4,7 @@ import com.example.platzigram.login.presenter.LoginPresenter;
 
 public interface LoginInteractor {
     void signIn(String username, String password);
+    void signInFacebook(String token);
     void loginSuccess();
     void loginFailed(String error);
     void onStart();

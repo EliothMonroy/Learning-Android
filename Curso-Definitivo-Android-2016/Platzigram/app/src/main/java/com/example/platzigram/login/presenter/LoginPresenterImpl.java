@@ -22,7 +22,12 @@ public class LoginPresenterImpl implements LoginPresenter {
         loginView.showProgressBar();
         loginInteractor.signIn(username,password);
     }
-
+    
+    @Override
+    public void signInFacebook(String token) {
+        loginInteractor.signInFacebook(token);
+    }
+    
     @Override
     public void loginSuccess() {
         loginView.enableInputs();
