@@ -45,7 +45,7 @@
         
         <activity android:name=".post.view.NewPostActivity"/>
         <activity
-            android:name=".view.PictureDetailActivity"
+            android:name=".post.view.PictureDetailActivity"
             android:parentActivityName=".view.ContainerActivity" />
         <activity
             android:name=".view.ContainerActivity"

@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
         String timeStamp=new SimpleDateFormat("yyyyMMdd_HH-mm-ss").format(new Date());
         String imageFileName="JPG_"+timeStamp+"_";
         File storageDir=getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File photo=File.createTempFile(imageFileName,".jpg",storageDir);
+        File photo=File.createTempFile(imageFileName,".jpeg",storageDir);
         photoPathTemp="file:"+photo.getAbsolutePath();
         return photo;
     }

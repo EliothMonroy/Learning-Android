@@ -65,11 +65,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
         hideProgressBar();
-    
-        callbackManager = CallbackManager.Factory.create();
-    
         
+        //Facebook login
         loginButton =  findViewById(R.id.loginButtonFB);
+        callbackManager = CallbackManager.Factory.create();
         loginButton.setReadPermissions(Arrays.asList(EMAIL));
         // If you are using in a fragment, call loginButton.setFragment(this);
     
@@ -81,13 +80,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 Log.w(TAG,"Facebook login success token: "+loginResult.getAccessToken().getToken());
                 loginPresenter.signInFacebook(loginResult.getAccessToken().getToken());
             }
-        
             @Override
             public void onCancel() {
                 // App code
                 Log.w(TAG,"Facebook login unsuccessful cancel");
             }
-        
             @Override
             public void onError(FacebookException exception) {
                 // App code

@@ -1,6 +1,8 @@
 package com.example.platzigram.login.repository;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -35,6 +37,10 @@ public class LoginRepositoryImpl implements LoginRepository {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    SharedPreferences preferences=activity.getSharedPreferences("USER", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=preferences.edit();
+                    editor.putString("email",task.getResult().getUser().getEmail());
+                    editor.apply();
                     loginInteractor.loginSuccess();
                 }else{
                     loginInteractor.loginFailed("Ocurrio el siguiente error: "+task.getException().toString());
@@ -51,6 +57,10 @@ public class LoginRepositoryImpl implements LoginRepository {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Log.w(TAG,"Inicio sesión con facebook exitoso");
+                    SharedPreferences preferences=activity.getSharedPreferences("USER", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=preferences.edit();
+                    editor.putString("email",task.getResult().getUser().getEmail());
+                    editor.apply();
                     loginInteractor.loginSuccess();
                 }else{
                     loginInteractor.loginFailed("Ocurrio el siguiente error: "+task.getException().toString());
