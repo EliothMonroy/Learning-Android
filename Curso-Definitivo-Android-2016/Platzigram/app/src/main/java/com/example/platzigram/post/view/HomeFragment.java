@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+
+import com.crashlytics.android.Crashlytics;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.Fragment;
 import androidx.core.content.FileProvider;
@@ -85,6 +87,7 @@ public class HomeFragment extends Fragment {
                     
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Crashlytics.logException(e);
                 }
     
                 if(photoFile!=null){
@@ -92,6 +95,7 @@ public class HomeFragment extends Fragment {
                     intentTakePicture.putExtra(MediaStore.EXTRA_OUTPUT,photoUri);
                     startActivityForResult(intentTakePicture, REQUEST_CAMERA);
                 }else{
+                    Crashlytics.log(Log.DEBUG,"HomeFragment","No se puede crear la imagen temporal");
                     Toast.makeText(getContext(), "No se puede crear imagen temporal", Toast.LENGTH_LONG).show();
                 }
                 
