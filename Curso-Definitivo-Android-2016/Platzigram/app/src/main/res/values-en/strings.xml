@@ -33,6 +33,7 @@
     <string name="text_button_create_post">Create post</string>
     <string name="menu_signout">Sign out</string>
     <string name="menu_about">Acerca de</string>
+    <string name="fcm_message">Test message</string>
     <!--    <string name="facebook_app_id">2180444108920051</string>-->
 <!--    <string name="fb_login_protocol_scheme">fb2180444108920051</string>-->
 

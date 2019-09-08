@@ -34,6 +34,8 @@
     <string name="fb_login_protocol_scheme">fb2180444108920051</string>
     <string name="menu_signout">Sign out</string>
     <string name="menu_about">About Platzigramm</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="fcm_message">Test message</string>
 
 
 </resources>
