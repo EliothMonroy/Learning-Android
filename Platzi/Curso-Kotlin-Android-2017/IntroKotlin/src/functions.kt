@@ -1,4 +1,4 @@
-fun hello():Unit{ //Todas las funciones regresan Unit ->void
+fun hello():Unit{ //Todas las funciones por defecto regresan Unit ->void
     println("Hola a todos")
 }
 
