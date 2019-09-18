@@ -18,7 +18,7 @@ class ShopCartActivity : AppCompatActivity() {
         rcCart.setHasFixedSize(true)
 
         val items = arrayListOf<ItemLanding>()
-        
+
         val db=DbOpenHelper.getInstance(this)
         db?.use {
             select("Productos").exec {
