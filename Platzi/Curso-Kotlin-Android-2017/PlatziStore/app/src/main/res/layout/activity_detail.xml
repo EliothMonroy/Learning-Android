@@ -24,8 +24,9 @@
                 android:id="@+id/imageHeaderDetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@drawable/shop"
+                android:src="@drawable/shoe_placeholder"
                 app:layout_collapseMode="parallax"
+                android:transitionName="transitionHeader"
                 android:scaleType="centerCrop"/>
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -47,5 +48,14 @@
         <include layout="@layout/content_description"/>
 
     </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btnDetailBuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
+        android:text="Comprar"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

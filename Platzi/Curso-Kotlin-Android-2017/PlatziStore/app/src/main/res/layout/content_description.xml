@@ -14,30 +14,38 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/txtDetailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            tools:text="Titulo"/>
+            android:transitionName="transitionTitle"
+            tools:text="Título"/>
 
         <TextView
+            android:id="@+id/txtDetailDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:transitionName="transitionDesc"
             tools:text="Descripción"/>
 
         <TextView
+            android:id="@+id/txtDetailPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"
             android:layout_gravity="end"
+            android:transitionName="transitionPrice"
             tools:text="$$$"/>
 
         <TextView
+            android:id="@+id/txtDetailLongDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            tools:text="$$$"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/loremipsum"/>
 
     </LinearLayout>
 

@@ -11,9 +11,11 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imageItemHeader"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/shoe_placeholder"
+            android:transitionName="transitionHeader"
             android:scaleType="centerCrop"/>
 
         <LinearLayout
@@ -27,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:transitionName="transitionTitle"
                 tools:text="Tìtulo" />
 
             <TextView
@@ -34,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:transitionName="transitionDesc"
                 tools:text="Descripción" />
 
             <TextView
@@ -43,6 +47,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorAccent"
                 tools:text="Precio"
+                android:transitionName="transitionPrice"
                 android:layout_gravity="end"/>
 
         </LinearLayout>
