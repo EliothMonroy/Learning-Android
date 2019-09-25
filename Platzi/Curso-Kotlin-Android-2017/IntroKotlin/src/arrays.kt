@@ -13,6 +13,9 @@ fun main() {
     mapa.put("b",40)//Así podemos agregar valores al mapa
 
     val arr = IntArray(5) { it * 1 }
+    val arr2=IntArray(5)
+    val emptyStringArray=mutableListOf<String>()
+    emptyStringArray.add("a")
     println(arr.javaClass.kotlin.qualifiedName)//IntArray
     val array= listOf(1,2,3)
     println(array.javaClass.kotlin.qualifiedName)//Arrays.ArrayList
