@@ -103,7 +103,5 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
 
         }
     }
-
-
-
+    
 }
