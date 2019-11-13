@@ -14,11 +14,11 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         enviar.setOnClickListener {
-            val edadNum=edad.text?.toString()?.toInt()?:"Vacio"
+            val edadNum=if (edad.text.toString().equals("")) -1 else edad.text.toString().toInt()
             when (edadNum){
-                "Vacio"->Toast.makeText(this,"Ingrese un número por favor",Toast.LENGTH_LONG).show()
-                 in 1..17->startActivity(Intent(this@Home,MenorActivity::class.java))
-                 else->startActivity(Intent(this@Home,MayorActivity::class.java))
+                -1->Toast.makeText(this,"Ingrese un número por favor",Toast.LENGTH_LONG).show()
+                in 1..17->startActivity(Intent(this@Home,MenorActivity::class.java))
+                else->startActivity(Intent(this@Home,MayorActivity::class.java))
             }
         }
 
