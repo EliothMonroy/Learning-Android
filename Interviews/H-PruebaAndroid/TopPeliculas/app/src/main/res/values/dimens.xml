@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardview_movie_height">400dp</dimen>
+    <dimen name="cardview_movie_width">300dp</dimen>
+    <dimen name="cardview_movie_margin">8dp</dimen>
+    <dimen name="cardview_movie_radius">4dp</dimen>
+    <dimen name="cardview_movie_layout_padding_left">8dp</dimen>
+    <dimen name="cardview_movie_title_size">18sp</dimen>
+    <dimen name="cardview_movie_rate_size">14sp</dimen>
+    <dimen name="common_margin">16dp</dimen>
+</resources>

@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/texto_home_bienvenida"
-                style="@style/EstiloTextoPaso"
+                style="@style/EstiloTextoUsuario"
                 android:layout_marginBottom="@dimen/fab_margin"
                 />
 
@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/texto_home_correo_usuario"
-                style="@style/EstiloTextoPaso"
+                style="@style/EstiloTextoUsuario"
                 android:layout_marginBottom="@dimen/fab_margin" />
 
         </LinearLayout>
