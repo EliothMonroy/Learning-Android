@@ -14,4 +14,7 @@
     <string name="texto_home_correo_usuario">Usuario:  %1$s</string>
     <string name="nombre_shared_preferences">Login</string>
     <string name="llaveShared">Correo</string>
+    <string name="texto_checkbox">No volver a mostrar el tutorial</string>
+    <string name="llaveTutorial">Tutorial</string>
+    <string name="texto_boton_borrar">Borrar sharedPref</string>
 </resources>

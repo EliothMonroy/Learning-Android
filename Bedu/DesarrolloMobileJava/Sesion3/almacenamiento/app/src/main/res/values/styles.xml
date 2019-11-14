@@ -14,7 +14,7 @@
     </style>
 
     <style name="EstiloTextoUsuario">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 

@@ -91,7 +91,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/texto_hint_registro"
-                android:layout_marginBottom="@dimen/fab_margin"/>
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:importantForAutofill="no" />
 
             <Button
                 android:id="@+id/registrar"
@@ -114,9 +116,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/texto_home_bienvenida"
-                style="@style/EstiloTextoUsuario"
-                android:layout_marginBottom="@dimen/fab_margin"
-                />
+                style="@style/EstiloTextoPaso"
+                android:layout_marginBottom="@dimen/fab_margin"/>
 
             <TextView
                 android:id="@+id/usuarioEmail"
@@ -125,6 +126,20 @@
                 android:text="@string/texto_home_correo_usuario"
                 style="@style/EstiloTextoUsuario"
                 android:layout_marginBottom="@dimen/fab_margin" />
+
+            <CheckBox
+                android:id="@+id/checkboxTutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/texto_checkbox"
+                android:layout_marginBottom="@dimen/fab_margin"/>
+
+            <Button
+                android:id="@+id/borrarShared"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/texto_boton_borrar"
+                style="@style/Widget.AppCompat.Button.Colored"/>
 
         </LinearLayout>
 
