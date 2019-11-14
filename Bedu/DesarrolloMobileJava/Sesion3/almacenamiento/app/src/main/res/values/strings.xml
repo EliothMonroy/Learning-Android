@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">almacenamiento</string>
+    <string name="llaveSharedPreferences">almacenamiento</string>
+    <string name="llaveCorreo">correo</string>
+    <string name="texto_paso_1">Paso 1</string>
+    <string name="texto_paso_2">Paso 2</string>
+    <string name="texto_paso_3">Paso 3</string>
+    <string name="texto_boton_continuar">Continuar</string>
+    <string name="texto_boton_anterior"><![CDATA[<-]]></string>
+    <string name="texto_boton_siguiente"><![CDATA[->]]></string>
+    <string name="texto_paso_registro">Ingresa tu correo</string>
+    <string name="texto_hint_registro">correo@gmail.com</string>
+    <string name="texto_home_bienvenida">Bienvenido!</string>
+    <string name="texto_home_correo_usuario">Usuario:  %1$s</string>
+    <string name="nombre_shared_preferences">Login</string>
+    <string name="llaveShared">Correo</string>
+</resources>
