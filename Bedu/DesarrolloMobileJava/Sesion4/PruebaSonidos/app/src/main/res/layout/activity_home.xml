@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reto.Home"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_weight=".34"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/caballo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".34"
+            android:src="@drawable/caballo"
+            android:onClick="hacerSonido"/>
+
+        <ImageView
+            android:id="@+id/cabra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:src="@drawable/cabra"
+            android:onClick="hacerSonido"/>
+
+        <ImageView
+            android:id="@+id/cerdo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:src="@drawable/cerdo"
+            android:onClick="hacerSonido"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_weight=".33"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/gallo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".34"
+            android:src="@drawable/gallo"
+            android:onClick="hacerSonido"/>
+
+        <ImageView
+            android:id="@+id/mono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:src="@drawable/mono"
+            android:onClick="hacerSonido"/>
+
+        <ImageView
+            android:id="@+id/perro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:src="@drawable/perro"
+            android:onClick="hacerSonido"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_weight=".33"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/serpiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:src="@drawable/serpiente"
+            android:onClick="hacerSonido"/>
+
+        <ImageView
+            android:id="@+id/tigre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:src="@drawable/tigre"
+            android:onClick="hacerSonido"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
