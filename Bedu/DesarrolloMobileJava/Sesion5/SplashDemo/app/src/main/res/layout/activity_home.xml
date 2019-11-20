@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    tools:context=".reto.HomeActivity">
+
+    <FrameLayout
+        android:id="@+id/contenedor"
+        android:layout_weight="6"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/botonCamara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mostrarFragment"
+            android:layout_margin="16dp"
+            android:text="Camara"/>
+
+        <Button
+            android:id="@+id/botonContactos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mostrarFragment"
+            android:layout_margin="16dp"
+            android:text="Contactos"/>
+
+
+        <Button
+            android:id="@+id/botonCalendario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mostrarFragment"
+            android:layout_margin="16dp"
+            android:text="Calendario"/>
+
+        <Button
+            android:id="@+id/botonBluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mostrarFragment"
+            android:layout_margin="16dp"
+            android:text="Bluetooth"/>
+
+    </LinearLayout>
+
+</LinearLayout>
