@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reto1.TestActivity"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/pregunta1"/>
+
+        <include layout="@layout/pregunta2"/>
+
+        <include layout="@layout/pregunta3"/>
+
+        <include layout="@layout/pregunta4"/>
+
+        <include layout="@layout/pregunta5"/>
+
+        <include layout="@layout/pregunta6"/>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_gravity="center"
+            android:id="@+id/terminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="evaluarTest"
+            android:text="@string/btn__texto_terminar"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/resultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</ScrollView>

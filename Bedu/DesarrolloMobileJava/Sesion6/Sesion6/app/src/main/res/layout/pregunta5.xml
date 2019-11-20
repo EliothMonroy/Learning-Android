@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/pregunta5"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:id="@+id/pregunta5_r"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <CheckBox
+            android:id="@+id/pregunta5_r1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pregunta5_r1"
+            android:layout_marginEnd="16dp"
+            android:tag=".5"/>
+
+        <CheckBox
+            android:id="@+id/pregunta5_r2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pregunta5_r2"
+            android:layout_marginEnd="16dp"
+            android:tag=".5"/>
+
+        <CheckBox
+            android:id="@+id/pregunta5_r3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pregunta5_r3"
+            android:layout_marginEnd="16dp"
+            android:tag="0"/>
+
+    </LinearLayout>
+
+</LinearLayout>

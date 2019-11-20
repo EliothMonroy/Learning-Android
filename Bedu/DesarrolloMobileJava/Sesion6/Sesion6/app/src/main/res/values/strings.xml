@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Sesion6</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed tristique libero. Fusce pulvinar molestie eleifend. Cras iaculis quis nisi eget blandit. Praesent feugiat augue quis tortor lobortis, et sollicitudin nisl aliquam. Ut semper, nisi sed eleifend porttitor, ante risus auctor dolor, vel tempor diam est sed quam. Maecenas euismod enim iaculis viverra tempor. Phasellus cursus tempor turpis, nec porta felis dictum nec. Sed imperdiet posuere sapien, ac congue augue rhoncus dictum. Pellentesque molestie consectetur ipsum, ut rhoncus justo pretium sed. Vestibulum vel est fermentum ipsum ullamcorper vehicula. Vivamus non risus scelerisque, efficitur felis id, convallis nulla.  Quisque tincidunt turpis a tortor finibus, quis suscipit nisi aliquam. Pellentesque at lorem ex. Aliquam a arcu eget lacus mollis sollicitudin. Fusce non magna sem. Sed congue sit amet ex sit amet elementum. Pellentesque iaculis magna eu commodo scelerisque. Ut lobortis augue dolor. Sed dignissim, neque vitae mattis ullamcorper, nisl elit molestie arcu, vitae tincidunt nibh ipsum id sem. Pellentesque vestibulum vehicula quam. Curabitur lobortis magna leo, sollicitudin ullamcorper leo molestie quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Morbi cursus fermentum erat, vitae porttitor nulla euismod non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin faucibus purus arcu, non molestie leo pulvinar vitae. Nam placerat tellus sit amet leo aliquam, sed rutrum ipsum commodo. Fusce sed vulputate elit. Quisque quis risus et libero luctus finibus dictum non purus. Etiam eget purus vel ante eleifend blandit in eget metus. Aenean ut suscipit ante. Sed porttitor at nunc sit amet rhoncus. Curabitur felis risus, ornare ut dictum at, volutpat at lorem. Nunc viverra lectus ante, at tincidunt erat tempus eget. Donec imperdiet ante vitae orci interdum tincidunt. Morbi pharetra maximus ex at laoreet. Proin varius tortor ultrices ligula molestie maximus. Mauris tempor rutrum dolor non accumsan.</string>
+    <string name="pregunta1">1. Selecciona entre las opciones los lenguajes de programación</string>
+    <string name="pregunta1_r1">HTML</string>
+    <string name="pregunta1_r2">KOTLIN</string>
+    <string name="pregunta1_r3">JAVA</string>
+    <string name="pregunta2">2. ¿Cuál es el valor de PI?</string>
+    <string name="pregunta2_r1">3.141592</string>
+    <string name="pregunta2_r2">4.1413</string>
+    <string name="pregunta2_r3">Ninguna de las anteriores</string>
+    <string name="pregunta3">3. ¿Quién es mejor instructor?</string>
+    <string name="pregunta3_r1">Android</string>
+    <string name="pregunta3_r2">iOS</string>
+    <string name="pregunta3_r3">Java</string>
+    <string name="pregunta4">4. ¿Qué unidad de medida se debe usar para el diseño de los textos?</string>
+    <string name="pregunta4_r1">sp</string>
+    <string name="pregunta4_r2">dp</string>
+    <string name="pregunta4_r3">px</string>
+    <string name="pregunta5">5. Son views de tipo contenedor</string>
+    <string name="pregunta5_r1">Linear</string>
+    <string name="pregunta5_r2">Frame</string>
+    <string name="pregunta5_r3">ImageButton</string>
+    <string name="pregunta6">6. Sonido que hacen los elefantes</string>
+    <string name="pregunta6_r1">Ladran</string>
+    <string name="pregunta6_r2">Barritan</string>
+    <string name="pregunta6_r3">Graznan</string>
+    <string name="btn__texto_terminar">Evaluar</string>
+    <string name="resultado">Resultado: %1$f</string>
+</resources>
