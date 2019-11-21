@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@drawable/border">
+
+    <TextView
+        android:id="@+id/itemId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1"/>
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Elioth Monroy"/>
+
+    <TextView
+        android:id="@+id/itemEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="eliothmonroy@gmail.com"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemAddressStreet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Arbol"/>
+
+    <TextView
+        android:id="@+id/itemAddressCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Tultitlán"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/geo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemGeoLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="-37.3159"/>
+
+    <TextView
+        android:id="@+id/itemGeoLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="81.1496"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/company"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemCompanyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="-37.3159"/>
+
+</LinearLayout>

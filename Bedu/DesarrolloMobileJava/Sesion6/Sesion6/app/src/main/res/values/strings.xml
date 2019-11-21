@@ -27,4 +27,5 @@
     <string name="pregunta6_r3">Graznan</string>
     <string name="btn__texto_terminar">Evaluar</string>
     <string name="resultado">Resultado: %1$f</string>
+    <string name="todo">TODO</string>
 </resources>
