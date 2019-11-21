@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import xyz.eliothmonroy.sesion6.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    ArrayList<String> lista;
+    private ArrayList<String> lista;
 
-    public MyAdapter(ArrayList<String> lista){
+    MyAdapter(ArrayList<String> lista){
         this.lista=lista;
     }
 
@@ -38,14 +38,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return lista.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView textViewItem;
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewItem=itemView.findViewById(R.id.txtItem);
         }
-        public void asignarDato(String s){
+        void asignarDato(String s){
             textViewItem.setText(s);
             textViewItem.setOnClickListener(new View.OnClickListener() {
                 @Override
