@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Examen</string>
+    <string name="content_description_item_user_image">User image</string>
+    <string name="dummy_user_first_name">Elioth</string>
+    <string name="dummy_user_id">Id: 1</string>
+    <string name="dummy_user_email">Email: eliothmonroy@gmail.com</string>
+    <string name="dummy_user_last_name">Last name: Monroy</string>
+    <string name="user_id_placeholder">Id: %1$s</string>
+    <string name="user_email_placeholder">Email: %1$s</string>
+    <string name="user_first_name_placeholder">First name: %1$s</string>
+    <string name="user_last_name_placeholder">Last name: %1$s</string>
+    <string name="title_activity_user_detail">User Detail</string>
+</resources>
