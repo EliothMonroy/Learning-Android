@@ -43,18 +43,18 @@ public class UsersActivity extends AppCompatActivity {
         Call<List<User>> call=usersApi.getUsers();
         call.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(@NonNull Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(@NonNull Call<List<User>> call, @androidx.annotation.NonNull Response<List<User>> response) {
                 if (response.isSuccessful()){
                     users=response.body();
-                    UsersAdapter pictureAdapterRecyclerView=new UsersAdapter(users);
-                    recyclerUsers.setAdapter(pictureAdapterRecyclerView);
+                    UsersAdapter usersAdapter=new UsersAdapter(users);
+                    recyclerUsers.setAdapter(usersAdapter);
                 }else{
                     Toast.makeText(getApplicationContext(),"Response code: "+response.code(),Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<User>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<User>> call, @androidx.annotation.NonNull Throwable t) {
                 Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
