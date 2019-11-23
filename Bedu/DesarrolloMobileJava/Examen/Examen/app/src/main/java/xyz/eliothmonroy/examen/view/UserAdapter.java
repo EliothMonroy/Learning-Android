@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
-import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,10 +64,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                     Intent intent=new Intent(itemView.getContext(),UserDetailActivity.class);
                     intent.putExtra("User",user);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        //((Activity)(itemView.getContext())).getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-                        Explode explode=new Explode();
-                        explode.setDuration(1000);
-                        ((Activity)(itemView.getContext())).getWindow().setExitTransition(explode);
                         itemView.getContext().startActivity(intent, ActivityOptions.makeSceneTransitionAnimation((Activity) itemView.getContext()).toBundle());
 
                     } else {

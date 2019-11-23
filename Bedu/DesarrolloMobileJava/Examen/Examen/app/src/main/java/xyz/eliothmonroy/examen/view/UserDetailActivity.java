@@ -1,9 +1,6 @@
 package xyz.eliothmonroy.examen.view;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.transition.Explode;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,13 +32,6 @@ public class UserDetailActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(getString(R.string.title_activity_user_detail));
         }
 
-        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP){
-            //Agregamos la transición de entrada
-            getWindow().setEnterTransition(new Explode().setDuration(500));
-            //Para poner el status bar transparente
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
-
         if(getIntent().getExtras()!=null){
             user=getIntent().getExtras().getParcelable("User");
             Picasso.get().load(user.getAvatar()).into(userDetailImage);
@@ -50,6 +40,6 @@ public class UserDetailActivity extends AppCompatActivity {
             userDetailFirstName.setText(getString(R.string.user_first_name_placeholder,user.getFirst_name()));
             userDetailLastName.setText(getString(R.string.user_last_name_placeholder,user.getLast_name()));
         }
-
     }
+
 }
