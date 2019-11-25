@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool
-
 fun main(args: Array<String>) {
 
     // Numeros (Numbers)
@@ -43,6 +41,10 @@ fun main(args: Array<String>) {
     // Arreglos (Arrays)
 
     val numeros: Array<Int> = arrayOf(1, 2, 3, 4, 5)
+
+    val num= mutableListOf<String>() //Empty array
+    num.add("1")
+
     val vocales: Array<String> = arrayOf("A", "B", "C", "D", "E")
     val numerosString: Array<String> = Array(5) { i -> (i * i).toString() }
     val numerosString2: Array<String> = Array(5) { i -> i.times(i).toString() }
@@ -83,16 +85,16 @@ fun main(args: Array<String>) {
     * Operadores
     */
 
-    var a = 100
-    val b = 120
+    var a = -100
+    val b = -120
     var c:Int = 12
     var d:Int = 23
     var yes = true
 
     // Operaciones Unarias (Unary operations)
 
-    a.unaryPlus()
-    a.unaryMinus()
+    a.unaryPlus() //Multiplica el número por +1
+    println(b.unaryPlus())//Multiplica el número por -1
     yes.not()
 
     // Incrementales y decrementles (Increments and decrements)
@@ -118,7 +120,7 @@ fun main(args: Array<String>) {
     // operador de acceso indexado (Indexed access operator)
 
     val secondNumber = numbersArray.get(1)
-    numbersArray.set(numbersArray.size - 1, 8)
+    numbersArray[numbersArray.size - 1] = 8
 
     // Asignaciones aumentadas (Augmented assignments)
 

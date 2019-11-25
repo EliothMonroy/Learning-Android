@@ -88,7 +88,7 @@ fun main(args: Array<String>) {
 
     println("A es mayor a B? ${A.compareTo(B) > 0}")
     println("A es menor a B? ${A.compareTo(B) < 0}")
-    println("A es mayor o igual a B? ${A.compareTo(B) >= 0")
+    //println("A es mayor o igual a B? ${A.compareTo(B) >= 0")
     println("A es menor o igual a B? ${A.compareTo(B) <= 0}")
     
 }

@@ -1,3 +1,4 @@
+val PI2=3.1416
 fun main(args: Array<String>) {
 
     // Declaracion de variables
@@ -40,5 +41,12 @@ fun main(args: Array<String>) {
     println(a.div(b))
     println(a.rem(b))
     println(a.rangeTo(b))
+
+    val rawString:String="""
+        Se puede escribir en varias líneas
+        sin problema en kotlin
+    """.trimIndent()
+
+    print(rawString)
 
 }
