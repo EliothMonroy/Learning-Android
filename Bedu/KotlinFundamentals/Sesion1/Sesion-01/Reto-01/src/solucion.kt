@@ -27,7 +27,7 @@ fun main(args: Array<String>) {
     // Variable Unchangeable
 
     val fechaNacimiento: String = "01/01/19990"
-    fechaNacimiento = "01/01/19992"
+    //fechaNacimiento = "01/01/19992"
 
     // Operaciones
 
