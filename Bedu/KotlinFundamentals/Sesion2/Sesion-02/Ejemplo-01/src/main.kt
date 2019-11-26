@@ -1,23 +1,23 @@
-fun main(args: Array<String>) {
+fun main() {
     //Funcion normal
     fun crearSaludo(nombre: String): String {
 		return "Hola $nombre Bienvenido al curso de fundamentos de kotlin."
 	} 
 
-    println(crearSaludo())
+    println(crearSaludo("Elioth"))
     
     //Funcion sin parametros, solo imprime mensaje en consola
     fun saludar() {
 		println("Hola BEDU!")
     }
-    
+
     //Funcion con parametro String
     fun saludar(nombre: String) {
 		println("Hola $nombre")
     }
     
     //Funcion con valor de retorno 
-    fun saludar(nombre: String): String {
+    fun saludar(nombre: String,tel:String): String {
 		return "Hola $nombre"
     }
     
@@ -25,10 +25,11 @@ fun main(args: Array<String>) {
     fun sumar(a: Int, b: Int): Int = a + b
 
     //tipo de retorno inferido
-    fun sumar(a: Int, b:Int) = a + b
+    fun sumar(a: Int, b:Int,c:Int) = a + b+c
 
-    //Local function 
-    fun saludar(nombre: String) {
+
+    fun saludar(nombre: String,edad:Int) {
+        //Local function
 		fun crearSaludo(nombreParaSaludo: String): String {
 			return "Hola $nombreParaSaludo"
 		}
@@ -38,10 +39,10 @@ fun main(args: Array<String>) {
     
 
     //Funcion Lambda
-    var suma = {a: Int, b: Int -> a + b}
+    val sumaa = {a: Int, b: Int -> a + b}
 
 	//Ejecutamos nuestra lambda mandandole dos numeros como parametros
-    print(suma(4, 5))
+    print(sumaa(4, 5))
     
     //Funcion de orden superior
     //Declaramos nuestra funcion de orden superior
@@ -60,7 +61,11 @@ fun main(args: Array<String>) {
 
 	val suma = calculadora(10, 5, ::suma)
 	val restar = calculadora(10, 5, ::resta)
-	val multiplicar = calculadora(10, 5, ::multiplicacion)
+	val multiplicar = calculadora(10, 5, ::multiplica)
+
+    println(suma)
+    println(restar)
+    println(multiplicar)
 
 }
 
@@ -70,15 +75,17 @@ fun saludar(nombre: String) {
     println("Hola $nombre")
 }
 
-class Persona constructor(nombre: String) {
+class Persona constructor(val nombre: String) {
     fun decirHola() {
         saludar(nombre)
+        //saludar("nombre")
     }
 }
 
-//Men¡mber function
+//Menmber function
 class Calculadora {
     fun sumar(a: Int, b: Int): Int {
         return a + b
     }
+
 }

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sesion2</string>
+    <string name="instrucciones">Ingresa una cadena y te diré si es un palíndromo</string>
+    <string name="hint_palabra">Ana</string>
+    <string name="text_boton">A ver</string>
+    <string name="placeholder_resultado">Palabra sin vocales: %1$s</string>
+</resources>

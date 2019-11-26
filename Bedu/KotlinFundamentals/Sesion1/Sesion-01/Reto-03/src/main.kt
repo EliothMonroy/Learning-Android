@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main() {
     val vocales = arrayOf("A", "E", "I", "O", "U")
     val letra = "A"
     val letraBuscada: String
