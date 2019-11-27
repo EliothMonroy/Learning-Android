@@ -20,13 +20,13 @@
             android:id="@+id/radioButtonGrupo1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/text_grupo1"/>
+            tools:text="@string/text_grupo1"/>
 
         <RadioButton
             android:id="@+id/radioButtonGrupo2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/text_grupo2"/>
+            tools:text="@string/text_grupo2"/>
 
     </RadioGroup>
 
@@ -42,130 +42,148 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_alumno"
-                android:layout_marginEnd="8dp"
-                android:textStyle="bold"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:textStyle="bold"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/headerMateria1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/text_materia1"
-                android:layout_marginEnd="8dp"
-                android:textStyle="bold"/>
+                tools:text="@string/text_materia1"
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:textStyle="bold"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/headerMateria2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/text_materia2"
-                android:layout_marginEnd="8dp"
-                android:textStyle="bold"/>
+                tools:text="@string/text_materia2"
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:textStyle="bold"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/headerMateria3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/text_materia3"
-                android:layout_marginEnd="8dp"
-                android:textStyle="bold"/>
+                tools:text="@string/text_materia3"
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:textStyle="bold"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/headerPromedio"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_promedio"
-                android:layout_marginEnd="8dp"
-                android:textStyle="bold"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:textStyle="bold"
+                android:layout_weight="2"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <TextView
                 android:id="@+id/alumno1Nombre"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="@string/text_vacio"
-                android:layout_marginEnd="8dp"/>
+                tools:text="@string/text_alumno"
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno1Materia1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_materia1"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno1Materia2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_materia2"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno1Materia3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_materia3"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno1Promedio"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_promedio"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp"
+                android:layout_weight="2"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <TextView
                 android:id="@+id/alumno2Nombre"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="@string/text_vacio"
-                android:layout_marginEnd="8dp"/>
+                tools:text="@string/text_alumno"
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno2Materia1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/text_materia1"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno2Materia2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/text_materia2"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno2Materia3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/text_materia3"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/alumno2Promedio"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/text_promedio"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/half_fav_margin"
+                android:layout_weight="2"/>
 
         </LinearLayout>
 

@@ -7,7 +7,6 @@ import xyz.eliothmonroy.sesion2.R
 import xyz.eliothmonroy.sesion2.reto2.data.Alumno
 import xyz.eliothmonroy.sesion2.reto2.data.Grupo
 import xyz.eliothmonroy.sesion2.reto2.data.Materia
-import xyz.eliothmonroy.sesion2.showMessage
 
 class HomeActivity : AppCompatActivity() {
 
@@ -32,6 +31,9 @@ class HomeActivity : AppCompatActivity() {
         //Creamos objetos
         inicializarDatos()
 
+        radioButtonGrupo1.text=grupo1.nombre
+        radioButtonGrupo2.text=grupo2.nombre
+
         radioGroupGrupo.check(radioButtonGrupo1.id)
 
         mostrarGrupo1()
@@ -41,8 +43,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun mostrarGrupo2() {
-        //showMessage(this, "Grupo2")
-
         headerMateria1.text=alumno1.materias[0].nombre
         headerMateria2.text=alumno1.materias[1].nombre
         headerMateria3.text=alumno1.materias[2].nombre
@@ -61,8 +61,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun mostrarGrupo1() {
-        //showMessage(this, "Grupo1")
-
         headerMateria1.text=alumno3.materias[0].nombre
         headerMateria2.text=alumno3.materias[1].nombre
         headerMateria3.text=alumno3.materias[2].nombre
