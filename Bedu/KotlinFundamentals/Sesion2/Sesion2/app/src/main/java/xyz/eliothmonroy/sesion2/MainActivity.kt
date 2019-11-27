@@ -16,10 +16,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         boton.setOnClickListener {
+            resultado.text=""
             if (textoIngresado.text.toString() == ""){
                 showMessage(this,"Por favor ingrese alguna palabra")
             }else{
-                esPalindromo(textoIngresado.text.toString().replace(" ","").toLowerCase(Locale("es")))
+                esPalindromoCiclo(textoIngresado.text.toString().replace(" ","").toLowerCase(Locale("es")))
                 resultado.text = getString(R.string.placeholder_resultado,remplazarVocales(textoIngresado.text.toString()))
             }
         }

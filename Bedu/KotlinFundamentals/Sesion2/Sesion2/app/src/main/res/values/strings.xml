@@ -4,4 +4,12 @@
     <string name="hint_palabra">Ana</string>
     <string name="text_boton">A ver</string>
     <string name="placeholder_resultado">Palabra sin vocales: %1$s</string>
+    <string name="text_grupo1">Grupo 1</string>
+    <string name="text_materia1">Materia 1</string>
+    <string name="text_grupo2">Grupo 2</string>
+    <string name="text_vacio">Vacío</string>
+    <string name="text_materia2">Materia 2</string>
+    <string name="text_materia3">Materia 3</string>
+    <string name="text_promedio">Promedio</string>
+    <string name="text_alumno">Alumno</string>
 </resources>
