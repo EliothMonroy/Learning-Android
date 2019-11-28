@@ -6,8 +6,8 @@
     <string name="texto_radio_rectangulo">Rectángulo</string>
     <string name="texto_radio_triangulo">Triángulo</string>
     <string name="texto_boton_calcular">Calcular</string>
-    <string name="placeholder_resultado_area">Area: %1$s</string>
-    <string name="placeholder_resultado_perimetro">Perímetro: %1$s</string>
+    <string name="placeholder_resultado_area">Área: %1$.2f</string>
+    <string name="placeholder_resultado_perimetro">Perímetro: %1$.2f</string>
     <string name="hint_radio_circulo">Radio</string>
     <string name="hint_lado1_triangulo">Lado 1</string>
     <string name="hint_lado2_triangulo">Lado 2</string>

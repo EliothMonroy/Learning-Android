@@ -41,7 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
     </LinearLayout>
 
     <LinearLayout
@@ -51,13 +52,6 @@
         android:layout_weight="2"
         android:orientation="vertical"
         android:gravity="center">
-
-        <!--<Button
-            android:id="@+id/calcular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/texto_boton_calcular"
-            android:layout_marginBottom="@dimen/half_fav_margin"/>-->
 
         <TextView
             android:id="@+id/resultadoArea"
