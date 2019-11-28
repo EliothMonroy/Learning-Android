@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".reto1.HomeActivity"
+    android:padding="@dimen/fav_padding"
+    android:weightSum="10">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioCirculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_radio_circulo"/>
+
+        <RadioButton
+            android:id="@+id/radioRectangulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_radio_rectangulo"/>
+
+        <RadioButton
+            android:id="@+id/radioTriangulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_radio_triangulo"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/contenedorCampos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contenedorResultado"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!--<Button
+            android:id="@+id/calcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_boton_calcular"
+            android:layout_marginBottom="@dimen/half_fav_margin"/>-->
+
+        <TextView
+            android:id="@+id/resultadoArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/placeholder_resultado_area"
+            style="@style/estilo_resultados"
+            android:layout_marginTop="@dimen/half_fav_margin"
+            android:layout_marginBottom="@dimen/half_fav_margin"/>
+
+        <TextView
+            android:id="@+id/resultadoPerimetro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/placeholder_resultado_perimetro"
+            style="@style/estilo_resultados" />
+
+    </LinearLayout>
+
+</LinearLayout>
