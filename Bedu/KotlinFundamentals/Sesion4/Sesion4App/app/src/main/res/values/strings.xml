@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sesion4App</string>
+    <string name="channel_name">Categoria</string>
+    <string name="channel_description">Descripción categoria</string>
+    <string name="texto_boton_notificacion">Mostrar notificación</string>
+    <string name="texto_textview_detalle">DETALLE</string>
+</resources>
