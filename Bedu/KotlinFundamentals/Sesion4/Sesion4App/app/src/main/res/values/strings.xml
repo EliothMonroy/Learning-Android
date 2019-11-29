@@ -4,4 +4,18 @@
     <string name="channel_description">Descripción categoria</string>
     <string name="texto_boton_notificacion">Mostrar notificación</string>
     <string name="texto_textview_detalle">DETALLE</string>
+    <string name="texto_hint_num1">Num1</string>
+    <string name="texto_hint_num2">Num 2</string>
+    <string name="texto_hint_num3">Num 3</string>
+    <string name="texto_instrucciones">Por favor llena los campos</string>
+    <string name="texto_hint_num6">Num 6</string>
+    <string name="texto_hint_num5">Num 5</string>
+    <string name="texto_hint_num4">Num 4</string>
+    <string name="texto_hint_num7">Num 7</string>
+    <string name="texto_hint_num8">Num 8</string>
+    <string name="texto_hint_num9">Num 9</string>
+    <string name="texto_boton_calcular">Calcular</string>
+    <string name="placeholder_num_mayor">Número mayor: %1$.2f</string>
+    <string name="placeholder_num_menor">Número menor: %1$.2f</string>
+    <string name="placeholder_suma_diagonal">Suma diagonal: %1$.2f</string>
 </resources>

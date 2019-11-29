@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reto1.ResultadoActivity"
+    android:padding="@dimen/fav_padding"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/NumMayor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_num_mayor"
+        style="@style/EstiloResultado"
+        android:layout_marginBottom="@dimen/half_fav_margin"/>
+
+    <TextView
+        android:id="@+id/NumMenor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_num_menor"
+        style="@style/EstiloResultado"
+        android:layout_marginBottom="@dimen/half_fav_margin"/>
+
+    <TextView
+        android:id="@+id/SumaDiagonal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_suma_diagonal"
+        style="@style/EstiloResultado"
+        android:layout_marginBottom="@dimen/half_fav_margin"/>
+
+</LinearLayout>

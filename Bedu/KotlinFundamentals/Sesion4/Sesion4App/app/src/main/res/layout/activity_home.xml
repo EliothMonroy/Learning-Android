@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reto1.HomeActivity"
+    android:orientation="vertical"
+    android:padding="@dimen/fav_padding"
+    android:id="@+id/contenedor">
+
+    <TextView
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/texto_instrucciones"
+        style="@style/EstiloInsctrucciones"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num1"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num2"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/num3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num3"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/num4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num4"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/num5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num5"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/num6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num6"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/num7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num7"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/num8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num8"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/num9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_num9"
+            android:inputType="numberDecimal"
+            android:layout_marginEnd="@dimen/half_fav_margin"
+            android:importantForAutofill="no" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/BotonCalcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_boton_calcular"/>
+
+    </LinearLayout>
+
+</LinearLayout>
