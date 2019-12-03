@@ -6,10 +6,10 @@ import android.net.NetworkInfo;
 
 import java.util.ArrayList;
 
-import xyz.eliothmonroy.toppeliculas.App;
 import xyz.eliothmonroy.toppeliculas.model.pojos.Movie;
 import xyz.eliothmonroy.toppeliculas.model.repository.HomeRepository;
 import xyz.eliothmonroy.toppeliculas.model.repository.HomeRepositoryImpl;
+import xyz.eliothmonroy.toppeliculas.view.HomeActivity;
 import xyz.eliothmonroy.toppeliculas.view.HomeView;
 
 /**
@@ -42,7 +42,7 @@ public class HomePresenterImpl implements HomePresenter {
      * @return Verdadero o falso dependiendo si existe un provedor de internet activo
      */
     private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) App.getContextInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) ((HomeActivity)homeView).getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
     }

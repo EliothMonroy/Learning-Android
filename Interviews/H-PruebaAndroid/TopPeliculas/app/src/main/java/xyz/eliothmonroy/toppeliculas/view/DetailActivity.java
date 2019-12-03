@@ -38,7 +38,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         ButterKnife.bind(this);
         getScreenSize();
         if (getIntent().getExtras() != null) {
@@ -63,7 +65,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
      */
     @Override
     public void setMovieInfo() {
-        getSupportActionBar().setTitle(movie.getTitle());
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setTitle(movie.getTitle());
+        }
         movieImage.getLayoutParams().height = Functions.calculateHeightDetail(heightScreenDp);
         movieImage.getLayoutParams().width = Functions.calculateWidthDetail(heightScreenDp);
         movieTitle.setText(movie.getTitle());

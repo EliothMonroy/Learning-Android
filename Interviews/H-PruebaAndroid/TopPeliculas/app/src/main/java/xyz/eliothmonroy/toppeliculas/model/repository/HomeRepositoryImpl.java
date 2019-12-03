@@ -2,6 +2,8 @@ package xyz.eliothmonroy.toppeliculas.model.repository;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
@@ -39,21 +41,19 @@ public class HomeRepositoryImpl implements HomeRepository {
         Call<Result> call = restClient.getMovies();
         call.enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
-                switch (response.code()) {
-                    case HttpURLConnection.HTTP_OK:
-                        result = response.body();
+            public void onResponse(@NonNull Call<Result> call, @NonNull Response<Result> response) {
+                if (response.code() == HttpURLConnection.HTTP_OK) {
+                    result = response.body();
+                    if(result!=null){
                         movies = result.getMovies();
                         movies = getTopTenRatedMovies(movies);
                         homePresenter.setMovies(movies);
-                        break;
-                    default:
-                        break;
+                    }
                 }
             }
             
             @Override
-            public void onFailure(Call<Result> call, Throwable t) {
+            public void onFailure(@NonNull Call<Result> call, @NonNull Throwable t) {
                 Log.e(TAG, "error: " + t.toString());
             }
         });
@@ -66,6 +66,6 @@ public class HomeRepositoryImpl implements HomeRepository {
      */
     @Override
     public ArrayList<Movie> getTopTenRatedMovies(ArrayList<Movie> movies) {
-        return new ArrayList<Movie>(movies.subList(0, 10));
+        return new ArrayList<>(movies.subList(0, 10));
     }
 }
