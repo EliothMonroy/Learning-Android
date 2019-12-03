@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">retrofitDemo</string>
-    <string name="texto_campo_busqueda">Frase a buscar</string>
+    <string name="texto_campo_busqueda">Palabra a buscar</string>
     <string name="texto_boton_buscar">Buscar</string>
 </resources>
