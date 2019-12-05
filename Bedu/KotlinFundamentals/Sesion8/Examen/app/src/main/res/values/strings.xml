@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Examen</string>
+    <string name="dummy_usuario_correo">eliothmonroy@gmail.com</string>
+    <string name="placeholder_usuario_correo">Correo: %1$s</string>
+    <string name="placeholder_usuario_telefono">Teléfono: %1$s</string>
+    <string name="placeholder_usuario_nombre">Nombre: %1$s</string>
+    <string name="texto_titulo_cuentas">Cuentas</string>
+    <string name="placeholder_cuenta_numero">Número: %1$s</string>
+    <string name="placeholder_cuenta_saldo">Saldo: %1$s</string>
+    <string name="texto_descripcion_imagen_usuario">Imagen usuario</string>
+    <string name="texto_descripcion_imagen_dinero">Imagen dinero</string>
+</resources>

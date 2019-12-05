@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/usuarioItem"
+    android:layout_marginBottom="@dimen/half_fab_margin"
+    android:backgroundTint="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/tam_imagen_usuario"
+            android:layout_height="@dimen/tam_imagen_usuario"
+            android:src="@drawable/ic_face_black_24dp"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:contentDescription="@string/texto_descripcion_imagen_usuario" />
+
+        <TextView
+            android:id="@+id/usuarioCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/estiloInfoUsuario"
+            tools:text="@string/placeholder_usuario_correo"/>
+
+        <TextView
+            android:id="@+id/usuarioNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/estiloInfoUsuario"
+            tools:text="@string/placeholder_usuario_nombre"/>
+
+        <TextView
+            android:id="@+id/usuarioTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/estiloInfoUsuario"
+            tools:text="@string/placeholder_usuario_telefono"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

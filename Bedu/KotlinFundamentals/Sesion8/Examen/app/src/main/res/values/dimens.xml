@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_padding">16dp</dimen>
+    <dimen name="half_fab_margin">8dp</dimen>
+    <dimen name="imagen_cuenta_size">50dp</dimen>
+    <dimen name="tam_imagen_usuario_detalle">100dp</dimen>
+    <dimen name="tam_imagen_usuario">100dp</dimen>
+</resources>
