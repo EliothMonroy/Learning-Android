@@ -1,6 +1,0 @@
-//Clase automovil
-
-
-
-//Clase Persona
-
