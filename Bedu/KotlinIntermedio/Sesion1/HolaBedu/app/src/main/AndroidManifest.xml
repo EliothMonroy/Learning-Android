@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xyz.eliothmonroy.holabedu">
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-feature android:required="true" android:name="android.hardware.camera2"/>
+    <uses-feature android:required="true" android:name="android.hardware.fingerprint"/>
+    <uses-feature android:required="true" android:name="android.hardware.usb"/>
+    <!-- El archivo AndroidManifest.xml es de vital importancia debido a que este archivo contiene información sobre nuestra aplicación
+    que leen tanto las herramientas de compilicación de android (jdk), como el propio sistema operativo android cuando la aplicación esta
+    instalada, en este se indica información de la app como el nombre del paquete (que después se convierte en su id), a los permisos
+    que la app solicita para usar funcionalidad especial del dispositivo (internet, camara), y también indica los contenidos de la app
+    (activities, services, content providers, broadcast receivers).
+    Si una aplicación no tiene un manifest es imposible considerarla como una aplación Android, a que lo por lo descrito anteriormente,
+    es importante que este archivo exista para que la aplicación pueda ser compilada, instalada y usada.-->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

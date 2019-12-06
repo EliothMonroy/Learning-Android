@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">HolaBedu</string>
+    <string name="texto_toolbar_inicio">Bienvenido</string>
+    <string name="texto_hola_bedu">Hola Bedu !</string>
+    <string name="texto_descripcion_imagen_inicio">Imagen inicio</string>
+</resources>
