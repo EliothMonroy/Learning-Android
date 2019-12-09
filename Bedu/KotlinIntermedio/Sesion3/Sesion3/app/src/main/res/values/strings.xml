@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Sesion3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_first_fragment">Fragment primero</string>
+    <string name="text_second_fragment">Fragment segundo</string>
+    <string name="text_button">Cambiar fragment</string>
 </resources>
