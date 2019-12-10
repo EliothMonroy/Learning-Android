@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sesion4</string>
+    <string name="text_hello_world">Hello World!</string>
+    <string name="text_button_dummy">Botón</string>
+    <string name="text_edit_dummy">Nombre</string>
+    <string name="example_text">Foto que tome en Cánada</string>
+    <string name="text_likes_dummy">Likes:</string>
+    <string name="text_number_likes_dummy">10</string>
+</resources>
