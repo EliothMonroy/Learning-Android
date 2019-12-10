@@ -10,6 +10,7 @@ class EmptyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empty)
+
         val fragmentManager = supportFragmentManager //creando el Fragment Manager
         var fragmentTransaction = fragmentManager.beginTransaction()
         val fragment = MyFragment() //Creando una instancia de mi Fragmento
