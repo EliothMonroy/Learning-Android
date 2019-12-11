@@ -2,6 +2,7 @@ package xyz.eliothmonroy.sesion4.reto1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import xyz.eliothmonroy.sesion4.R
 
 class HomeActivity : AppCompatActivity() {
 
