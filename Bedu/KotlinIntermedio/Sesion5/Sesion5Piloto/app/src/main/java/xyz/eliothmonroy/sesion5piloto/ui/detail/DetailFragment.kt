@@ -2,6 +2,7 @@ package xyz.eliothmonroy.sesion5piloto.ui.detail
 
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,13 +30,11 @@ class DetailFragment :Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button.setOnClickListener {
             //Inflate the dialog with custom view
-            val mDialogView = LayoutInflater.from(activity!!.applicationContext).inflate(R.layout.dialog, null)
+            val mDialogView = LayoutInflater.from(activity).inflate(R.layout.dialog, null)
             //AlertDialogBuilder
-            val mBuilder = AlertDialog.Builder(activity!!.applicationContext)
+            AlertDialog.Builder(activity)
                 .setView(mDialogView)
-                .setTitle("Comprar")
-            //show dialog
-            val  mAlertDialog = mBuilder.show()
+                .setTitle("Comprar").show()
         }
     }
 
