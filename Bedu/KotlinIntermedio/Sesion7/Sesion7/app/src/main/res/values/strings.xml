@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sesion7</string>
+    <string name="help">Ayuda</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="editar">Editar</string>
+    <string name="borrar">Eliminar</string>
+    <string name="color">Cambiar color</string>
+    <string name="letra">Cambiar tamaño de letra</string>
+</resources>
