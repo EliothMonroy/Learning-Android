@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FingerprintAuthentication</string>
+    <string name="login">Login</string>
+    <string name="title_biometric_prompt">Biometric demo</string>
+    <string name="subtitle_biometric_prompt">Authentication is required to continue</string>
+    <string name="description_biometric_prompt">This app uses biometric authentication to protect your data</string>
+    <string name="negative_biometric_prompt">Cancel</string>
+</resources>
