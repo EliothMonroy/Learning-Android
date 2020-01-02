@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dog=Dog("Firulais",6)
+        var dog=Dog("Firulais",6)
         Realm.init(this)
         val realm=Realm.getDefaultInstance()
         // Query Realm for all dogs younger than 2 years old
