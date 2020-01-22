@@ -32,7 +32,8 @@ class TestFragment : TiFragment<TestPresenter,TestView>(),TestView {
     }
 
     override fun getLoginResponse() {
-        presenter.getLoginResponse("castilloreyesjuan@gmail.com","12345678")
+        //presenter.getLoginResponse("castilloreyesjuan@gmail.com","12345678")
+        presenter.getLoginResponseRx("castilloreyesjuan@gmail.com","12345678")
     }
 
     override fun showResponse(message: String) {

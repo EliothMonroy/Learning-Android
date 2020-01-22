@@ -28,11 +28,32 @@ class TestPresenter : TiPresenter<TestView>() {
                         ConstantsCommons.SUCCESS->{
                             deliverToView { showResponse(response.mDescription) }
                         }
+                        else->{
+                            deliverToView { showResponse(response.mDescription) }
+                        }
                     }
                 }, {throwable->
                     deliverToView { showResponse("ERROR"+throwable.message)}
                 })
         )
+    }
+
+    fun getLoginResponseRx(email: String, password: String){
+         testInteractor.getLoginResponse(email, password)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+             .subscribe({response->
+                 when(response.mCodeOperation){
+                     ConstantsCommons.SUCCESS->{
+                         deliverToView { showResponse(response.mDescription) }
+                     }
+                     else->{
+                         deliverToView { showResponse(response.mDescription) }
+                     }
+                 }
+             },{throwable->
+                 deliverToView { showResponse("ERROR"+throwable.message)}
+             })
     }
 
 }
