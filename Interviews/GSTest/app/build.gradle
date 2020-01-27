@@ -33,6 +33,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     //librerias para patron de diseño mvp
     implementation "net.grandcentrix.thirtyinch:thirtyinch:$THIRTY_VERSION"
     implementation "net.grandcentrix.thirtyinch:thirtyinch-rx:$THIRTY_VERSION"
@@ -43,7 +44,7 @@ dependencies {
     implementation "io.reactivex:rxjava:$RX_JAVA_VERSION"
     implementation "io.reactivex.rxjava2:$RX_KOTLIN_VERSION"
 
-    //linrerias de retrofit
+    //librerias de retrofit
     implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
     implementation "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
