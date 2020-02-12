@@ -9,8 +9,6 @@ import xyz.eliothmonroy.restconsumetest.async.domain.AsyncInteractorImpl
 class AsyncViewModel : ViewModel() {
     private val asyncInteractor:AsyncInteractor=AsyncInteractorImpl()
 
-    var test=1
-
     fun getTodo(): LiveData<Todo>{
         return asyncInteractor.getTodo(1)
     }
