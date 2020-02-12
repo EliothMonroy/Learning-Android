@@ -23,8 +23,13 @@ class CoroutinesActivity : AppCompatActivity() {
     }
 
     private fun showTodo() {
-        coroutinesViewModel.getTodo.observe(this, Observer {
-            Log.d("Async:",it.toString())
+        coroutinesViewModel.getTodo2().observe(this, Observer {response->
+            Log.d("Coroutines: ",response.toString())
+            if (response.isSuccessful){
+                Log.d("Coroutines: ",response.body()!!.toString())
+            }else{
+                Log.d("Coroutines: ",response.body()!!.toString())
+            }
         })
     }
 

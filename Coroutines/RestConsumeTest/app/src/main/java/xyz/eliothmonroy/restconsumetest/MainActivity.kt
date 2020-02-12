@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(Intent(this,AsyncActivity::class.java))
-        //startActivity(Intent(this,CoroutinesActivity::class.java))
+        //startActivity(Intent(this,AsyncActivity::class.java))
+        startActivity(Intent(this,CoroutinesActivity::class.java))
     }
 }
