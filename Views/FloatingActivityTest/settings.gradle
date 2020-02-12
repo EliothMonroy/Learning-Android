@@ -1,0 +1,2 @@
+include ':app', ':floatingactivitylibrarytest'
+rootProject.name='FloatingActivityTest'
