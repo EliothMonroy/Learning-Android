@@ -9,7 +9,7 @@ import xyz.eliothmonroy.viewmodelcourtcounter.ViewModel.ScoreViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var scoreViewModel: ScoreViewModel
+    private lateinit var scoreViewModel: ScoreViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
