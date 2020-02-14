@@ -1,4 +1,4 @@
-package xyz.eliothmonroy.restconsumetest.coroutines.view.viewmodel
+package xyz.eliothmonroy.restconsumetest.coroutines.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*

@@ -1,4 +1,4 @@
-package xyz.eliothmonroy.restconsumetest.async.view.viewmodel
+package xyz.eliothmonroy.restconsumetest.async.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

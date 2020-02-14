@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import xyz.eliothmonroy.restconsumetest.R
-import xyz.eliothmonroy.restconsumetest.coroutines.view.viewmodel.CoroutinesViewModel
+import xyz.eliothmonroy.restconsumetest.coroutines.presentation.viewmodel.CoroutinesViewModel
 
 class CoroutinesActivity : AppCompatActivity() {
 
