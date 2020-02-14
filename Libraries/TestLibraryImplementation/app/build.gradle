@@ -41,8 +41,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
-
-    implementation 'com.github.EliothMonroy:TestLibrary:0.1'
+    implementation project(path: ':testlibrary-release')
 
 
 }
