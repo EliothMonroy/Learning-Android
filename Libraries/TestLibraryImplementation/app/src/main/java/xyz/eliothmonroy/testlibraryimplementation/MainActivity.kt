@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showTodo(){
         mainViewModel.todo.observe(this, Observer {response->
-            Log.d("Main: ",response.toString())
+            Log.d("Main",response.toString())
         })
     }
 
