@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import xyz.eliothmonroy.testlibrary.data.model.Response
 import xyz.eliothmonroy.testlibraryimplementation.presentation.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {

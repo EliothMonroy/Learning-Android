@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'digital.wup.android-maven-publish'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -57,4 +59,13 @@ dependencies {
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 }
 
-apply from: 'https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/master/gradle-mavenizer.gradle'
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            from components.android
+            groupId 'xyz.eliothmonroy'
+            artifactId 'testlibrary'
+            version "1.0.0"
+        }
+    }
+}

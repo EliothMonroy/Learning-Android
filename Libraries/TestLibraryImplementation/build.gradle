@@ -3,6 +3,7 @@
 buildscript {
     ext.kotlin_version = '1.3.61'
     repositories {
+        // mavenLocal()
         google()
         jcenter()
         
@@ -17,7 +18,12 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
+        // mavenLocal()
+
+        maven {
+            url "/Users/emonroym/.m2/repository"
+        }
+
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
