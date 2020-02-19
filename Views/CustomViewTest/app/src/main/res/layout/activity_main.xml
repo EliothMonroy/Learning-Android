@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
+<!--        style="@style/Widget.AppCompat.Button.Colored"-->
+
 
     <Button
         android:layout_marginTop="8dp"
@@ -18,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Botón normal"
         android:backgroundTint="@color/colorPrimary"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 
 </LinearLayout>

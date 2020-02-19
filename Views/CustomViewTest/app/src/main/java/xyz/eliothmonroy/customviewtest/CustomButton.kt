@@ -1,14 +1,21 @@
 package xyz.eliothmonroy.customviewtest
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.Button
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
+import androidx.appcompat.view.ContextThemeWrapper
 
-class CustomButton(context: Context, st:AttributeSet) : Button(context,st) {
+
+class CustomButton(context: Context, st:AttributeSet) : Button(
+    ContextThemeWrapper(
+        context,
+        //androidx.appcompat.R.style.Widget_AppCompat_Button_Colored
+        R.style.CustomButton
+    ),
+    st,
+    0
+) {
 
     init {
         //setBackgroundColor(Color.RED)
@@ -17,7 +24,7 @@ class CustomButton(context: Context, st:AttributeSet) : Button(context,st) {
         isClickable=true
         isEnabled=true
         //TODO: No se ve el color en android 5
-        background.setTint(Color.RED)
+        //background.setTint(Color.RED)
     }
 
 }
