@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'digital.wup.android-maven-publish'
 
 android {
     compileSdkVersion 29
@@ -13,6 +12,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -24,17 +24,7 @@ android {
         }
     }
 
-    compileOptions{
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
-
-/*buildscript {
-    repositories {
-        mavenLocal()
-    }
-}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,26 +36,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Retrofit dependencies
-    api "com.squareup.retrofit2:converter-gson:2.6.0"
-    api "com.squareup.retrofit2:retrofit:2.6.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.0"
+    implementation "com.squareup.retrofit2:retrofit:2.6.0"
 
     //Kotlin coroutines dependencies
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
 
     //ViewModel dependencies
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     // LiveData
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
 }
 
-publishing {
-    publications {
-        mavenAar(MavenPublication) {
-            from components.android
-            groupId 'xyz.eliothmonroy'
-            artifactId 'testlibrary'
-            version "1.0.0"
-        }
-    }
-}

@@ -36,20 +36,14 @@ dependencies {
     //Kotlin coroutines dependencies
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
-
     //ViewModel dependencies
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
-
     implementation ('xyz.eliothmonroy:testlibrary:1.0.0@aar'){transitive=true}
+    //implementation ('xyz.eliothmonroy:testlibrary-maven:2.0.0@aar'){transitive=true}
 
-
-    //implementation 'com.github.EliothMonroy:TestLibrary:0.3'
-
-    //Retrofit dependencies
-    //implementation "com.squareup.retrofit2:converter-gson:2.6.0"
-    //implementation "com.squareup.retrofit2:retrofit:2.6.0"
+    //implementation 'com.github.EliothMonroy:TestLibrary:0.4'
 
 }
