@@ -1,2 +1,2 @@
-include ':app', ':testlibrary-release', ':testlibrary-unspecified'
+include ':app'
 rootProject.name='TestLibraryImplementation'
