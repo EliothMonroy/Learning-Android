@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity android:name=".presentation.TestActivity"></activity>
+        <activity android:name=".presentation.ProcessActivity"></activity>
+        <activity android:name=".presentation.TestActivity" />
     </application>
 
 </manifest>

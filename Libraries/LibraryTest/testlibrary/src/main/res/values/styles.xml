@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@android:color/holo_green_dark</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:text">Iniciar sesión con Banco Azteca</item>
+        <item name="android:clickable">true</item>
+        <item name="android:enabled">true</item>
+        <!--        <item name="android:drawableLeft">@drawable/ba_logo</item>-->
+    </style>
+</resources>
