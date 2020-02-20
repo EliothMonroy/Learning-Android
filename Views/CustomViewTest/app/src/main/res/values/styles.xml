@@ -8,11 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="CustomButton" parent="Widget.AppCompat.Button.Colored">
-
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
         <item name="android:backgroundTint">@color/colorPrimaryDark</item>
         <item name="android:textColor">@android:color/white</item>
-
+        <item name="android:text">Iniciar sesión con Banco Azteca</item>
+        <item name="android:clickable">true</item>
+        <item name="android:enabled">true</item>
+<!--        <item name="android:drawableLeft">@drawable/ba_logo</item>-->
     </style>
 
 </resources>
