@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_process.*
 import xyz.eliothmonroy.testlibrary.R
@@ -33,9 +32,8 @@ class ProcessActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun returnToActivity(userInfo: Todo){
+    private fun returnToActivity(todo: Todo){
+        Log.d("Library:",todo.toString())
         val returnIntent= Intent()
         returnIntent.putExtra("UserInfo", UserInfo(user.text.toString(),pass.text.toString()))
         setResult(Activity.RESULT_OK,returnIntent)

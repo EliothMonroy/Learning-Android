@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object BaseServiceBuilder {
     private var retrofitService: Retrofit = Retrofit.Builder()
-        .baseUrl(CommonConstants.BASE_URL)
+        .baseUrl(CommonConstants.BASE_URL_LOGIN)
         .addConverterFactory(GsonConverterFactory.create())
         //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
         .build()

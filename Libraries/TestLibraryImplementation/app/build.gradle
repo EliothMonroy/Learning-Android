@@ -46,4 +46,18 @@ dependencies {
 
     //implementation 'com.github.EliothMonroy:TestLibrary:0.4'
 
+    def lifecycle_version = "2.2.0"
+    //implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
+
+    //implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    //implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
+
+    //implementation 'com.squareup:android-times-square:1.6.5@aar'
+
+    //implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //implementation("com.squareup.moshi:moshi-kotlin:1.9.2")
+
+
+
 }
