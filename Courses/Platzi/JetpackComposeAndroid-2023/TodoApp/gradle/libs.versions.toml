@@ -1,8 +1,8 @@
 [versions]
 
 
-agp = "8.13.2"
-kotlin = "1.9.24"
+agp = "9.4.1"
+kotlin = "2.2.10"
 coreKtx = "1.13.1"
 hilt = "2.51.1"
 lifecycleRuntimeKtx = "2.8.6"
@@ -61,3 +61,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
