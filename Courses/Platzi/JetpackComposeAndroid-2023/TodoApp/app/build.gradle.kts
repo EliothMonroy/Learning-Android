@@ -15,7 +15,7 @@ room {
 
 android {
     namespace = "com.juandgaines.todoapp"
-    compileSdk = 34
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.juandgaines.todoapp"
