@@ -20,7 +20,8 @@ android {
     defaultConfig {
         applicationId = "com.juandgaines.todoapp"
         minSdk = 26
-        targetSdk = 34
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
