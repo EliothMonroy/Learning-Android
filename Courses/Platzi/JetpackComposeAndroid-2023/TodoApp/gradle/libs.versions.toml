@@ -11,7 +11,7 @@ ksp="2.2.10-2.0.2"
 kotlinx-serialization = "1.12.0"
 coroutines = "1.11.0"
 composeBom = "2024.04.01"
-navigationCompose = "2.8.1"
+navigationCompose = "2.10.2"
 navigationComposeHilt = "1.2.0"
 room = "2.6.1"
 
@@ -48,7 +48,6 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines"}
 
 #Room
-# Room
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
