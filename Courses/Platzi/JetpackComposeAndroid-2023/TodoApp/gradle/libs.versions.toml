@@ -13,7 +13,7 @@ coroutines = "1.11.0"
 composeBom = "2024.04.01"
 navigationCompose = "2.10.2"
 navigationComposeHilt = "1.4.0"
-room = "2.6.1"
+room = "2.8.5"
 
 
 [libraries]
