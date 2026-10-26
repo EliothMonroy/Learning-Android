@@ -3,7 +3,7 @@
 
 agp = "9.4.1"
 kotlin = "2.2.10"
-coreKtx = "1.13.1"
+coreKtx = "1.19.1"
 hilt = "2.51.1"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
