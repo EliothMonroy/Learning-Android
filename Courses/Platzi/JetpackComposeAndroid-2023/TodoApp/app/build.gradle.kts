@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.compose)
-    //alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.dagger.hilt)
     //alias(libs.plugins.room)
     alias(libs.plugins.ksp)
 }
@@ -76,9 +76,9 @@ dependencies {
     //ksp(libs.room.compiler)
 
     //Librerias Dagger Hilt
-    //implementation(libs.dagger.hilt.navigation.compose)
-    //implementation(libs.dagger.hilt)
-    //ksp(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.navigation.compose)
+    implementation(libs.dagger.hilt)
+    ksp(libs.dagger.hilt.compiler)
 
     //Libreria Serializacion
 
