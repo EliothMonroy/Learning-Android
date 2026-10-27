@@ -1,6 +1,7 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.dagger.hilt)
@@ -12,8 +13,7 @@ room {
     schemaDirectory("$projectDir/schemas")
 }
 
-
-android {
+configure<ApplicationExtension> {
     namespace = "com.juandgaines.todoapp"
     compileSdk = 37
 
@@ -39,19 +39,9 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
 
     buildFeatures {
         compose = true
-    }
-
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
@@ -82,7 +72,6 @@ dependencies {
     ksp(libs.dagger.hilt.compiler)
 
     //Libreria Serializacion
-
     implementation(libs.kotlinx.serialization.json)
 
 }
