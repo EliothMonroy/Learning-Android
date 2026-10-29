@@ -1,0 +1,5 @@
+<resources>
+    <item name="nav_discover" type="id" />
+    <item name="nav_map" type="id" />
+    <item name="nav_saved" type="id" />
+</resources>

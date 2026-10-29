@@ -1,0 +1,50 @@
+{
+  "device": "emulator-5554",
+  "build": "debug",
+  "model": "palace",
+  "gesture": {
+    "from": [
+      800,
+      1000
+    ],
+    "to": [
+      320,
+      1000
+    ],
+    "durationMs": 1500
+  },
+  "gfxinfo": {
+    "frames": 47,
+    "jankyFrames": 44,
+    "histogramMedianMs": 22,
+    "histogramP90Ms": 38,
+    "histogramP95Ms": 40
+  },
+  "timestampMetrics": {
+    "frames": 47,
+    "ui_draw_ms": {
+      "min": 0.171792,
+      "median": 0.432625,
+      "max": 8.505833,
+      "mean": 0.6514184468085106
+    },
+    "render_sync_queue_ms": {
+      "min": 0.04175,
+      "median": 0.109333,
+      "max": 5.666125,
+      "mean": 0.3648564255319149
+    },
+    "issue_commands_ms": {
+      "min": 0.454917,
+      "median": 2.247084,
+      "max": 15.523334,
+      "mean": 6.121737659574468
+    },
+    "end_to_end_ms": {
+      "min": 17.115616,
+      "median": 22.133204,
+      "max": 50.445453,
+      "mean": 27.510517148936167
+    }
+  }
+}

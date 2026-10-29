@@ -1,0 +1,50 @@
+# Android / Gradle build output and local caches
+.gradle/
+.kotlin/
+**/build/
+.externalNativeBuild/
+.cxx/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Machine-specific Android SDK and IDE settings
+local.properties
+.idea/
+*.iml
+*.ipr
+*.iws
+.navigation/
+.wakatime-project
+
+# Signing material and local secrets
+*.jks
+*.keystore
+key.properties
+keystore.properties
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Profiler recordings and crash / diagnostic output
+*.hprof
+*.trace
+*.perfetto-trace
+*.pftrace
+*.log
+hs_err_pid*
+
+# OS and editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+
+# Keep Gradle wrapper files, app assets, documentation and screenshots in Git.

@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-28",
+  "device": "emulator-5554",
+  "build": "debug",
+  "implementation": "Kotlin",
+  "model": "palace",
+  "gesture": {
+    "from": [
+      800,
+      1000
+    ],
+    "to": [
+      320,
+      1000
+    ],
+    "durationMs": 1500
+  },
+  "gfxinfo": {
+    "frames": 49,
+    "jankyFrames": 43,
+    "histogramMedianMs": 23,
+    "histogramP90Ms": 42,
+    "histogramP95Ms": 53
+  },
+  "timestampMetrics": {
+    "frames": 49,
+    "histogram": [
+      "Total frames rendered: 49",
+      "Janky frames: 43 (87.76%)",
+      "50th percentile: 23ms",
+      "90th percentile: 42ms",
+      "95th percentile: 53ms"
+    ],
+    "ui_draw_ms": {
+      "min": 0.22425,
+      "median": 0.800916,
+      "max": 4.235958,
+      "mean": 1.0267891632653061
+    },
+    "render_sync_queue_ms": {
+      "min": 0.008667,
+      "median": 0.107917,
+      "max": 43.950042,
+      "mean": 2.8557253061224483
+    },
+    "issue_commands_ms": {
+      "min": 0.395166,
+      "median": 1.29725,
+      "max": 24.776834,
+      "mean": 6.490835102040816
+    },
+    "end_to_end_ms": {
+      "min": 17.032678,
+      "median": 23.363483,
+      "max": 83.863956,
+      "mean": 31.32318742857143
+    }
+  },
+  "comparisonLimit": "Previous Java measurement was recorded earlier; this is not a controlled paired performance comparison."
+}
