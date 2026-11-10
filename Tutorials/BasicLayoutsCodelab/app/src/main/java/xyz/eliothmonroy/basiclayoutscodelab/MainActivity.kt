@@ -176,6 +176,24 @@ fun FavoriteCollectionsGrid(
     }
 }
 
+@Composable
+fun HomeSection(
+    @StringRes title: Int,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Column(modifier = modifier) {
+        Text(
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
+                .padding(horizontal = 16.dp),
+            style = MaterialTheme.typography.titleMedium,
+            text = stringResource(title),
+        )
+        content()
+    }
+}
+
 // Previews
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
@@ -223,6 +241,18 @@ fun AlignYourBodyRowPreview() {
 fun FavoriteCollectionsGridPreview() {
     BasicLayoutsCodelabTheme {
         FavoriteCollectionsGrid()
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
+@Composable
+fun HomeSectionPreview() {
+    BasicLayoutsCodelabTheme {
+        HomeSection(
+            title = R.string.align_your_body,
+        ) {
+            AlignYourBodyRow()
+        }
     }
 }
 
