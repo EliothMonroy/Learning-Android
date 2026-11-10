@@ -7,19 +7,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -98,9 +102,32 @@ fun AlignYourBodyElement(
 
 @Composable
 fun FavoriteCollectionCard(
-
+    @DrawableRes drawable: Int,
+    @StringRes text: Int,
+    modifier: Modifier = Modifier,
 ) {
-
+    Surface(
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        color = MaterialTheme.colorScheme.surfaceVariant
+    ) {
+        Row(
+            modifier = Modifier.width(255.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(
+                modifier = Modifier.size(80.dp),
+                painter = painterResource(drawable),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+            )
+            Text(
+                text = stringResource(text),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+        }
+    }
 }
 
 
@@ -121,6 +148,18 @@ fun AlignYourBodyElementPreview() {
         AlignYourBodyElement(
             drawable = R.drawable.ab1_inversions,
             text = R.string.ab1_inversions,
+            modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
+@Composable
+fun FavoriteCollectionCardPreview() {
+    BasicLayoutsCodelabTheme {
+        FavoriteCollectionCard(
+            drawable = R.drawable.fc2_nature_meditations,
+            text = R.string.fc2_nature_meditations,
             modifier = Modifier.padding(8.dp)
         )
     }
