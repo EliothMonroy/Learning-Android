@@ -57,11 +57,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            BasicLayoutsCodelabTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { contentPadding ->
-                    HomeScreen(modifier = Modifier.padding(contentPadding))
-                }
-            }
+            AppPortrait()
         }
     }
 }
@@ -255,6 +251,15 @@ fun HomeScreen(
     }
 }
 
+@Composable
+fun AppPortrait() {
+    BasicLayoutsCodelabTheme {
+        Scaffold(bottomBar = { BottomNavigation() }) { paddingValues ->
+            HomeScreen(Modifier.padding(paddingValues))
+        }
+    }
+}
+
 // Previews
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
@@ -331,6 +336,12 @@ fun HomeScreenPreview() {
     BasicLayoutsCodelabTheme {
         HomeScreen()
     }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
+@Composable
+fun AppPortraitPreview() {
+    AppPortrait()
 }
 
 // Mock data
