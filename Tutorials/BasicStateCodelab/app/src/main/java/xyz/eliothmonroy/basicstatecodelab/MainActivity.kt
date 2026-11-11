@@ -26,6 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -94,7 +95,11 @@ fun StatefulCounter(modifier: Modifier = Modifier) {
 fun WellnessScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         StatefulCounter(modifier = modifier)
-        WellnessTaskList()
+        val list = remember { getWellnessTasks().toMutableStateList() }
+        WellnessTaskList(
+            list = list,
+            onCloseTask = { task -> list.remove(task) }
+        )
     }
 
 }
@@ -130,14 +135,15 @@ fun WellnessTaskItem(
 @Composable
 fun WellnessTaskItem(
     taskName: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClose: () -> Unit
 ) {
     var checkedState by rememberSaveable { mutableStateOf(false) }
     WellnessTaskItem(
         taskName = taskName,
         checked = checkedState,
         onCheckedChange = { newValue -> checkedState = newValue },
-        onClose = {},
+        onClose = onClose,
         modifier = modifier
     )
 }
@@ -145,13 +151,17 @@ fun WellnessTaskItem(
 @Composable
 fun WellnessTaskList(
     modifier: Modifier = Modifier,
-    list: List<WellnessTask> = remember { getWellnessTasks() }
+    list: List<WellnessTask> = remember { getWellnessTasks() },
+    onCloseTask: (WellnessTask) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
     ) {
-        items(list) { item ->
-            WellnessTaskItem(taskName = item.label)
+        items(items = list, key = { task -> task.id }) { item ->
+            WellnessTaskItem(
+                taskName = item.label,
+                onClose = { onCloseTask(item) }
+            )
         }
     }
 }
@@ -180,6 +190,7 @@ fun WellnessTaskItemPreview() {
     BasicStateCodelabTheme {
         WellnessTaskItem(
             taskName = "Task 1",
+            onClose = {}
         )
     }
 }
@@ -188,7 +199,9 @@ fun WellnessTaskItemPreview() {
 @Composable
 fun WellnessTaskListPreview() {
     BasicStateCodelabTheme {
-        WellnessTaskList()
+        WellnessTaskList(
+            onCloseTask = {}
+        )
     }
 }
 
