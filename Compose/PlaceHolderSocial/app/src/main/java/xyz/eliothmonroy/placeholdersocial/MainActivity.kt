@@ -10,12 +10,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.PhotoLibrary
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -31,8 +39,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PlaceHolderSocialTheme {
-            }
+            App()
+        }
+    }
+}
+
+@Composable
+fun App(modifier: Modifier = Modifier) {
+    PlaceHolderSocialTheme {
+        Scaffold(
+            modifier = modifier,
+            topBar = { TopBarCustom() },
+            bottomBar = { BottomNavBar() }
+        ) { _ ->
+
         }
     }
 }
@@ -91,6 +111,59 @@ fun TopBar(modifier: Modifier = Modifier) {
     )
 }
 
+@Composable
+fun BottomNavBar(modifier: Modifier = Modifier) {
+    BottomAppBar(
+        modifier = modifier,
+    ) {
+        NavigationBarItem(
+            selected = true,
+            onClick = {},
+            icon = {
+                Icon(imageVector = Icons.Default.Home, contentDescription = null)
+            },
+            label = {
+                Text("Feed")
+            },
+            alwaysShowLabel = true,
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = {},
+            icon = {
+                Icon(imageVector = Icons.Outlined.CheckCircle, contentDescription = null)
+            },
+            label = {
+                Text("Todos")
+            },
+            alwaysShowLabel = true,
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = {},
+            icon = {
+                Icon(imageVector = Icons.Outlined.PhotoLibrary, contentDescription = null)
+            },
+            label = {
+                Text("Albums")
+            },
+            alwaysShowLabel = true,
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = {},
+            icon = {
+                Icon(imageVector = Icons.Outlined.Person, contentDescription = null)
+            },
+            label = {
+                Text("Profile")
+            },
+            alwaysShowLabel = true,
+        )
+
+    }
+}
+
 
 // Previews
 
@@ -102,12 +175,26 @@ private fun TopBarPreview() {
     }
 }
 
-@Preview(showBackground = true, widthDp = screenHeight)
+@Preview(showBackground = true, widthDp = screenWidth)
 @Composable
 private fun TopBarCustomPreview() {
     PlaceHolderSocialTheme {
         TopBarCustom()
     }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun BottomNavBarPrev() {
+    PlaceHolderSocialTheme {
+        BottomNavBar()
+    }
+}
+
+@Preview
+@Composable
+private fun AppPreview() {
+    App()
 }
 
 // Constants
