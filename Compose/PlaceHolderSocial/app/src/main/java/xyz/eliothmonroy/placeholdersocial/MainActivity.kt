@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Notifications
@@ -19,6 +19,10 @@ import androidx.compose.material.icons.outlined.PhotoLibrary
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.FloatingActionButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -50,7 +54,9 @@ fun App(modifier: Modifier = Modifier) {
         Scaffold(
             modifier = modifier,
             topBar = { TopBarCustom() },
-            bottomBar = { BottomNavBar() }
+            bottomBar = { BottomNavBar() },
+            floatingActionButton = { FloatingActionButton() },
+            floatingActionButtonPosition = FabPosition.End,
         ) { _ ->
 
         }
@@ -84,8 +90,6 @@ fun TopBarCustom(modifier: Modifier = Modifier) {
             Icon(imageVector = Icons.Outlined.Notifications, contentDescription = null)
         }
     }
-
-
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -160,7 +164,18 @@ fun BottomNavBar(modifier: Modifier = Modifier) {
             },
             alwaysShowLabel = true,
         )
+    }
+}
 
+@Composable
+fun FloatingActionButton(modifier: Modifier = Modifier) {
+    FloatingActionButton(
+        modifier = modifier,
+        onClick = {},
+        shape = MaterialTheme.shapes.large,
+        elevation = FloatingActionButtonDefaults.elevation(6.dp)
+    ) {
+        Icon(imageVector = Icons.Default.Edit, contentDescription = null)
     }
 }
 
@@ -191,10 +206,18 @@ private fun BottomNavBarPrev() {
     }
 }
 
-@Preview
+@Preview(showBackground = true, widthDp = screenWidth, heightDp = screenHeight)
 @Composable
 private fun AppPreview() {
     App()
+}
+
+@Preview
+@Composable
+private fun FloatingActionButtonPreview() {
+    PlaceHolderSocialTheme {
+        FloatingActionButton()
+    }
 }
 
 // Constants
