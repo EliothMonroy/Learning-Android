@@ -88,7 +88,7 @@ fun SectionHeader(
     Row(
         modifier = modifier
             .height(48.dp)
-            .padding(start = 16.dp, end = 4.dp),
+            .padding(start = 16.dp, end = if (showActionButton) 4.dp else 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
@@ -170,7 +170,6 @@ fun UserFilterSection(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         SectionHeader(title = "People", showActionButton = true)
         UserFilterList(items = userFilterList)
-        Spacer(modifier = Modifier.height(8.dp))
     }
 }
 
@@ -339,6 +338,16 @@ fun PostCardList(
 }
 
 @Composable
+fun LatestPostsSection(
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier) {
+        SectionHeader(title = "Latest posts")
+        PostCardList(postList = usersPosts)
+    }
+}
+
+@Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
@@ -346,6 +355,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             .verticalScroll(rememberScrollState())
     ) {
         UserFilterSection()
+        Spacer(modifier = Modifier.height(8.dp))
     }
 }
 
@@ -612,11 +622,19 @@ private fun PostCardPreview() {
     }
 }
 
-@Preview
+@Preview(showBackground = true, widthDp = screenWidth)
 @Composable
 private fun PostCardListPreview() {
     PlaceHolderSocialTheme {
         PostCardList(postList = usersPosts)
+    }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun LatestPostsSectionPreview() {
+    PlaceHolderSocialTheme {
+        LatestPostsSection()
     }
 }
 
