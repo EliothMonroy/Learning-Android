@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,12 +13,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -112,6 +115,8 @@ fun UserFilterItem(
         Box(
             modifier = Modifier
                 .size(64.dp)
+                .clip(CircleShape)
+                .background(color = MaterialTheme.colorScheme.surfaceVariant)
                 .then(
                     if (isSelected) Modifier.border(
                         width = 2.dp,
@@ -119,7 +124,7 @@ fun UserFilterItem(
                         color = MaterialTheme.colorScheme.primary
                     ) else Modifier
                 ),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             if (name == null) {
                 Image(
@@ -214,12 +219,50 @@ fun PostCardFooter(
     isBookmarked: Boolean = false
 ) {
     Row(
-        modifier = modifier.height(48.dp).fillMaxWidth(),
+        modifier = modifier
+            .height(48.dp)
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         CommentsChip(numberOfComments = comments)
         Bookmark(isSelected = isBookmarked)
+    }
+}
+
+@Composable
+fun PostCardHeader(
+    modifier: Modifier = Modifier,
+    name: String,
+    handle: String
+) {
+    Row(
+        modifier = modifier
+            .height(40.dp)
+            .fillMaxWidth()
+    ) {
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(color = MaterialTheme.colorScheme.surfaceVariant),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(text = name.first().toString())
+        }
+        Spacer(modifier = Modifier.width(12.dp))
+        Column(modifier = Modifier.fillMaxHeight()) {
+            Text(
+                text = name,
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = "@$handle",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }
 
@@ -467,6 +510,14 @@ private fun BookmarkPreview() {
 private fun PostCardFooterPreview() {
     PlaceHolderSocialTheme {
         PostCardFooter(comments = 5, isBookmarked = true)
+    }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun PostCardHeaderPreview() {
+    PlaceHolderSocialTheme {
+        PostCardHeader(name = "Elioth", handle = "elioth")
     }
 }
 
