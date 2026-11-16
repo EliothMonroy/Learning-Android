@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -152,7 +153,7 @@ fun UserFilterItem(
 }
 
 @Composable
-fun UserFilterRow(modifier: Modifier = Modifier, items: List<UserFilter>) {
+fun UserFilterList(modifier: Modifier = Modifier, items: List<UserFilter>) {
     LazyRow(
         modifier = modifier.height(84.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -168,7 +169,7 @@ fun UserFilterRow(modifier: Modifier = Modifier, items: List<UserFilter>) {
 fun UserFilterSection(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         SectionHeader(title = "People", showActionButton = true)
-        UserFilterRow(items = userFilterList)
+        UserFilterList(items = userFilterList)
         Spacer(modifier = Modifier.height(8.dp))
     }
 }
@@ -318,6 +319,21 @@ fun PostCard(
                 comments = post.comments,
                 isBookmarked = post.isBookmarked
             )
+        }
+    }
+}
+
+@Composable
+fun PostCardList(
+    modifier: Modifier = Modifier,
+    postList: List<Post>
+) {
+    LazyColumn(
+        modifier = modifier.padding(start = 16.dp, end = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(postList) { post ->
+            PostCard(post = post)
         }
     }
 }
@@ -523,9 +539,9 @@ private fun UserFilterItemPreview() {
 
 @Preview(showBackground = true, widthDp = screenWidth)
 @Composable
-private fun UserFilterRowPreview() {
+private fun UserFilterListPreview() {
     PlaceHolderSocialTheme {
-        UserFilterRow(items = userFilterList)
+        UserFilterList(items = userFilterList)
     }
 }
 
@@ -593,6 +609,14 @@ private fun PostCardBodyPreview() {
 private fun PostCardPreview() {
     PlaceHolderSocialTheme {
         PostCard(post = usersPosts.first())
+    }
+}
+
+@Preview
+@Composable
+private fun PostCardListPreview() {
+    PlaceHolderSocialTheme {
+        PostCardList(postList = usersPosts)
     }
 }
 
