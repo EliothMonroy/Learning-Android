@@ -363,7 +363,7 @@ fun App(modifier: Modifier = Modifier) {
     PlaceHolderSocialTheme {
         Scaffold(
             modifier = modifier,
-            topBar = { TopBarCustom() },
+            topBar = { TopBar() },
             bottomBar = { BottomNavBar() },
             floatingActionButton = { FloatingActionButton() },
             floatingActionButtonPosition = FabPosition.End,
@@ -391,7 +391,7 @@ fun TopBarCustom(modifier: Modifier = Modifier) {
         IconButton(
             onClick = {}
         ) {
-            Image(imageVector = Icons.Outlined.Search, contentDescription = null)
+            Icon(imageVector = Icons.Outlined.Search, contentDescription = null)
         }
 
         IconButton(
@@ -411,7 +411,8 @@ fun TopBar(modifier: Modifier = Modifier) {
         scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
         title = {
             Text(
-                text = "Title",
+                style = MaterialTheme.typography.titleLarge,
+                text = "Feed"
             )
         },
         actions = {
