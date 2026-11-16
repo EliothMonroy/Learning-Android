@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -49,6 +50,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
@@ -157,7 +159,7 @@ fun UserFilterRow(modifier: Modifier = Modifier, items: List<UserFilter>) {
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(items = items) { item ->
-            UserFilterItem(name = item.name, isSelected = true)
+            UserFilterItem(name = item.userName, isSelected = true)
         }
     }
 }
@@ -285,6 +287,38 @@ fun PostCardBody(
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
+    }
+}
+
+@Composable
+fun PostCard(
+    modifier: Modifier = Modifier,
+    post: Post
+) {
+    OutlinedCard(
+        modifier = modifier
+            .fillMaxWidth(),
+        shape = ShapeDefaults.Medium,
+        border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.outlineVariant),
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 4.dp)
+                .background(color = MaterialTheme.colorScheme.surface)
+        ) {
+            PostCardHeader(
+                name = post.userName,
+                handle = post.userHandle
+            )
+            PostCardBody(
+                postTitle = post.postTitle,
+                postBody = post.postBody
+            )
+            PostCardFooter(
+                comments = post.comments,
+                isBookmarked = post.isBookmarked
+            )
+        }
     }
 }
 
@@ -548,22 +582,84 @@ private fun PostCardHeaderPreview() {
 private fun PostCardBodyPreview() {
     PlaceHolderSocialTheme {
         PostCardBody(
-            postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-            postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+            postTitle = usersPosts.first().postTitle,
+            postBody = usersPosts.first().postBody
         )
     }
 }
 
-// test data
-data class UserFilter(val name: String?)
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun PostCardPreview() {
+    PlaceHolderSocialTheme {
+        PostCard(post = usersPosts.first())
+    }
+}
 
-val userFilterList = listOf(
-    UserFilter(null),
-    UserFilter("Elioth"),
-    UserFilter("Winnie"),
-    UserFilter("Paco"),
-    UserFilter("Oli")
+// test data
+data class UserFilter(val userName: String?)
+
+data class Post(
+    val userName: String,
+    val userHandle: String,
+    val postTitle: String,
+    val postBody: String,
+    val comments: Int,
+    val isBookmarked: Boolean
 )
+
+val usersPosts = listOf(
+    Post(
+        userName = "Elioth",
+        userHandle = "elioth",
+        postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        comments = 5,
+        isBookmarked = false
+    ),
+    Post(
+        userName = "Sandy",
+        userHandle = "sandy",
+        postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        comments = 4,
+        isBookmarked = false
+    ),
+    Post(
+        userName = "Paco",
+        userHandle = "paqui",
+        postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        comments = 3,
+        isBookmarked = false
+    ),
+    Post(
+        userName = "Winnie",
+        userHandle = "wais",
+        postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        comments = 2,
+        isBookmarked = false
+    ),
+    Post(
+        userName = "Oli",
+        userHandle = "oli",
+        postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        comments = 1,
+        isBookmarked = false
+    ),
+    Post(
+        userName = "Cristiano",
+        userHandle = "cr7",
+        postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        comments = 0,
+        isBookmarked = false
+    )
+)
+
+val userFilterList = listOf(UserFilter(null)) + usersPosts.map { UserFilter(it.userName) }
 
 // Constants
 const val screenWidth = 360
