@@ -27,12 +27,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.ChatBubbleOutline
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.PhotoLibrary
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.ChipColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
@@ -42,6 +46,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ShapeDefaults
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -50,7 +56,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -69,6 +77,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun SectionHeader(
     modifier: Modifier = Modifier,
+    title: String,
     showActionButton: Boolean = false
 ) {
     Row(
@@ -80,7 +89,7 @@ fun SectionHeader(
         Text(
             modifier = Modifier.weight(1f),
             style = MaterialTheme.typography.titleMedium,
-            text = "Text"
+            text = title
         )
         if (showActionButton) {
             TextButton(
@@ -152,10 +161,33 @@ fun UserFilterRow(modifier: Modifier = Modifier, items: List<UserFilter>) {
 @Composable
 fun UserFilterSection(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        SectionHeader(showActionButton = true)
+        SectionHeader(title = "People", showActionButton = true)
         UserFilterRow(items = userFilterList)
         Spacer(modifier = Modifier.height(8.dp))
     }
+}
+
+@Composable
+fun CommentsChip(
+    modifier: Modifier = Modifier,
+    numberOfComments: Int = 0
+) {
+    AssistChip(
+        modifier = modifier,
+        onClick = {},
+        label = {
+            Text(
+                text = "$numberOfComments comments",
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+        },
+        leadingIcon = {
+            Icon(imageVector = Icons.Outlined.ChatBubbleOutline, contentDescription = null)
+        },
+        shape = ShapeDefaults.Small,
+        colors = AssistChipDefaults.assistChipColors(containerColor = Color.Transparent)
+    )
 }
 
 @Composable
@@ -307,7 +339,7 @@ fun FloatingActionButton(modifier: Modifier = Modifier) {
 @Composable
 private fun SectionHeaderPreview() {
     PlaceHolderSocialTheme {
-        SectionHeader(showActionButton = true)
+        SectionHeader(title = "Title", showActionButton = true)
     }
 }
 
@@ -378,6 +410,14 @@ private fun UserFilterSectionPreview() {
 private fun HomeScreenPreview() {
     PlaceHolderSocialTheme {
         HomeScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun CommentsChipPreview() {
+    PlaceHolderSocialTheme {
+        CommentsChip(numberOfComments = 5)
     }
 }
 
