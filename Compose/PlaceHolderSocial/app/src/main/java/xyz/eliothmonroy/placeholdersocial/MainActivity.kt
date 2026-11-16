@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -239,7 +238,9 @@ fun PostCardHeader(
     Row(
         modifier = modifier
             .height(40.dp)
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Box(
             modifier = Modifier
@@ -250,7 +251,6 @@ fun PostCardHeader(
         ) {
             Text(text = name.first().toString())
         }
-        Spacer(modifier = Modifier.width(12.dp))
         Column(modifier = Modifier.fillMaxHeight()) {
             Text(
                 text = name,
@@ -263,6 +263,28 @@ fun PostCardHeader(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+    }
+}
+
+@Composable
+fun PostCardBody(
+    modifier: Modifier = Modifier,
+    postTitle: String,
+    postBody: String
+) {
+    Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Text(
+            text = postTitle,
+            maxLines = 2,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = postBody,
+            maxLines = 3,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 
@@ -518,6 +540,17 @@ private fun PostCardFooterPreview() {
 private fun PostCardHeaderPreview() {
     PlaceHolderSocialTheme {
         PostCardHeader(name = "Elioth", handle = "elioth")
+    }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun PostCardBodyPreview() {
+    PlaceHolderSocialTheme {
+        PostCardBody(
+            postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            postBody = "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+        )
     }
 }
 
