@@ -5,12 +5,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Notifications
@@ -34,6 +41,9 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import xyz.eliothmonroy.placeholdersocial.ui.theme.PlaceHolderSocialTheme
@@ -73,6 +83,47 @@ fun SectionHeader(
             }
         }
     }
+}
+
+@Composable
+fun UserFilterItem(
+    modifier: Modifier = Modifier,
+    name: String? = null,
+    isSelected: Boolean = false
+) {
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(
+            modifier = Modifier
+                .size(64.dp)
+                .then(
+                    if (isSelected) Modifier.border(
+                        width = 2.dp,
+                        shape = CircleShape,
+                        color = MaterialTheme.colorScheme.primary
+                    ) else Modifier
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            if (name == null) {
+                Image(
+                    modifier = Modifier.size(24.dp).clip(CircleShape),
+                    imageVector = Icons.Default.Group,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                )
+            } else {
+                Text(
+                    text = name.first().toString(),
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+        }
+        Text(
+            modifier = Modifier.paddingFromBaseline(top = 4.dp),
+            text = name ?: "All")
+    }
+
 }
 
 @Composable
@@ -247,11 +298,19 @@ private fun AppPreview() {
     App()
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun FloatingActionButtonPreview() {
     PlaceHolderSocialTheme {
         FloatingActionButton()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun UserFilterItemPreview() {
+    PlaceHolderSocialTheme {
+        UserFilterItem(name = "Elioth", isSelected = true)
     }
 }
 
