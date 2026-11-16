@@ -22,13 +22,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.FloatingActionButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -44,6 +44,33 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             App()
+        }
+    }
+}
+
+@Composable
+fun SectionHeader(
+    modifier: Modifier = Modifier,
+    showActionButton: Boolean = false
+) {
+    Row(
+        modifier = modifier
+            .height(48.dp)
+            .padding(start = 16.dp, end = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.titleMedium,
+            text = "Text"
+        )
+        if (showActionButton) {
+            TextButton(
+                modifier = Modifier.height(40.dp),
+                onClick = {},
+            ) {
+                Text(text = "See all")
+            }
         }
     }
 }
@@ -181,6 +208,14 @@ fun FloatingActionButton(modifier: Modifier = Modifier) {
 
 
 // Previews
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun SectionHeaderPreview() {
+    PlaceHolderSocialTheme {
+        SectionHeader(showActionButton = true)
+    }
+}
 
 @Preview(showBackground = true, widthDp = screenWidth)
 @Composable
