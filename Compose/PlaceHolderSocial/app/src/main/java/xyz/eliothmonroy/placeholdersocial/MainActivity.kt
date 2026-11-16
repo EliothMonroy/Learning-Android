@@ -208,6 +208,22 @@ fun Bookmark(
 }
 
 @Composable
+fun PostCardFooter(
+    modifier: Modifier = Modifier,
+    comments: Int = 0,
+    isBookmarked: Boolean = false
+) {
+    Row(
+        modifier = modifier.height(48.dp).fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        CommentsChip(numberOfComments = comments)
+        Bookmark(isSelected = isBookmarked)
+    }
+}
+
+@Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
@@ -443,6 +459,14 @@ private fun CommentsChipPreview() {
 private fun BookmarkPreview() {
     PlaceHolderSocialTheme {
         Bookmark(isSelected = false)
+    }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun PostCardFooterPreview() {
+    PlaceHolderSocialTheme {
+        PostCardFooter(comments = 5, isBookmarked = true)
     }
 }
 
