@@ -24,9 +24,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.ChatBubbleOutline
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Notifications
@@ -42,6 +44,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -185,6 +188,23 @@ fun CommentsChip(
         shape = ShapeDefaults.Small,
         colors = AssistChipDefaults.assistChipColors(containerColor = Color.Transparent)
     )
+}
+
+@Composable
+fun Bookmark(
+    modifier: Modifier = Modifier,
+    isSelected: Boolean = false
+) {
+    IconToggleButton(
+        modifier = modifier.size(48.dp),
+        checked = isSelected,
+        onCheckedChange = {}
+    ) {
+        Icon(
+            imageVector = if (isSelected) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
+            contentDescription = null
+        )
+    }
 }
 
 @Composable
@@ -415,6 +435,14 @@ private fun HomeScreenPreview() {
 private fun CommentsChipPreview() {
     PlaceHolderSocialTheme {
         CommentsChip(numberOfComments = 5)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BookmarkPreview() {
+    PlaceHolderSocialTheme {
+        Bookmark(isSelected = false)
     }
 }
 
