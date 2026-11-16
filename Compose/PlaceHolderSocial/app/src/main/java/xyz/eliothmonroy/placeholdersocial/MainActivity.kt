@@ -6,15 +6,23 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Group
@@ -106,7 +114,9 @@ fun UserFilterItem(
         ) {
             if (name == null) {
                 Image(
-                    modifier = Modifier.size(24.dp).clip(CircleShape),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clip(CircleShape),
                     imageVector = Icons.Default.Group,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
@@ -121,9 +131,42 @@ fun UserFilterItem(
         }
         Text(
             modifier = Modifier.paddingFromBaseline(top = 4.dp),
-            text = name ?: "All")
+            text = name ?: "All"
+        )
     }
+}
 
+@Composable
+fun UserFilterRow(modifier: Modifier = Modifier, items: List<UserFilter>) {
+    LazyRow(
+        modifier = modifier.height(84.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp)
+    ) {
+        items(items = items) { item ->
+            UserFilterItem(name = item.name, isSelected = true)
+        }
+    }
+}
+
+@Composable
+fun UserFilterSection(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        SectionHeader(showActionButton = true)
+        UserFilterRow(items = userFilterList)
+        Spacer(modifier = Modifier.height(8.dp))
+    }
+}
+
+@Composable
+fun HomeScreen(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        UserFilterSection()
+    }
 }
 
 @Composable
@@ -135,8 +178,8 @@ fun App(modifier: Modifier = Modifier) {
             bottomBar = { BottomNavBar() },
             floatingActionButton = { FloatingActionButton() },
             floatingActionButtonPosition = FabPosition.End,
-        ) { _ ->
-
+        ) { paddingValue ->
+            HomeScreen(modifier = Modifier.padding(paddingValue))
         }
     }
 }
@@ -313,6 +356,41 @@ private fun UserFilterItemPreview() {
         UserFilterItem(name = "Elioth", isSelected = true)
     }
 }
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun UserFilterRowPreview() {
+    PlaceHolderSocialTheme {
+        UserFilterRow(items = userFilterList)
+    }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun UserFilterSectionPreview() {
+    PlaceHolderSocialTheme {
+        UserFilterSection()
+    }
+}
+
+@Preview(showBackground = true, widthDp = screenWidth)
+@Composable
+private fun HomeScreenPreview() {
+    PlaceHolderSocialTheme {
+        HomeScreen()
+    }
+}
+
+// test data
+data class UserFilter(val name: String?)
+
+val userFilterList = listOf(
+    UserFilter(null),
+    UserFilter("Elioth"),
+    UserFilter("Winnie"),
+    UserFilter("Paco"),
+    UserFilter("Oli")
+)
 
 // Constants
 const val screenWidth = 360
