@@ -70,6 +70,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -889,12 +891,15 @@ sealed interface UiState {
 }
 
 
-class PlaceholderViewModel(val repository: PlaceholderRepository) : ViewModel() {
+class PlaceholderViewModel(
+    val repository: PlaceholderRepository,
+    dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : ViewModel() {
     private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             try {
                 val users = repository.getUsers()
                 val userFilters = users.map { UserFilter(userName = it.username) }
