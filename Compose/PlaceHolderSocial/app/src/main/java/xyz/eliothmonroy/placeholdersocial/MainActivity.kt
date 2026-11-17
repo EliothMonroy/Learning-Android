@@ -48,6 +48,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
@@ -428,7 +429,7 @@ fun TopBar(modifier: Modifier = Modifier) {
 
 @Composable
 fun BottomNavBar(modifier: Modifier = Modifier) {
-    BottomAppBar(
+    NavigationBar(
         modifier = modifier,
     ) {
         NavigationBarItem(
