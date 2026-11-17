@@ -410,7 +410,7 @@ fun HomeScreen(
             }
 
             is UiState.Error -> {
-                Text(text = "Error: $state.error}")
+                Text(text = "Error: ${state.error}")
             }
         }
     }
