@@ -39,7 +39,6 @@ import androidx.compose.material.icons.outlined.PhotoLibrary
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
@@ -58,6 +57,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -66,6 +66,21 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
+import okio.IOException
+import retrofit2.Retrofit
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import retrofit2.http.GET
 import xyz.eliothmonroy.placeholdersocial.ui.theme.PlaceHolderSocialTheme
 
 class MainActivity : ComponentActivity() {
@@ -165,10 +180,13 @@ fun UserFilterList(modifier: Modifier = Modifier, items: List<UserFilter>) {
 }
 
 @Composable
-fun UserFilterSection(modifier: Modifier = Modifier) {
+fun UserFilterSection(
+    modifier: Modifier = Modifier,
+    items: List<UserFilter>
+) {
     Column(modifier = modifier) {
         SectionHeader(title = "People", showActionButton = true)
-        UserFilterList(items = userFilterList)
+        UserFilterList(items = items)
     }
 }
 
@@ -339,23 +357,49 @@ fun PostCardList(
 
 @Composable
 fun LatestPostsSection(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    items: List<Post>
 ) {
     Column(modifier = modifier) {
         SectionHeader(title = "Latest posts")
-        PostCardList(postList = usersPosts)
+        PostCardList(postList = items)
     }
 }
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    viewModel: PlaceholderViewModel = viewModel {
+        PlaceholderViewModel(
+            repository = PlaceholderRepositoryImpl(
+                localDataSource = LocalDataSource(),
+                remoteDataSource = RemoteDataSource(PlaceholderApi.retrofitService)
+            )
+        )
+    }
+) {
+
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Column(
         modifier = modifier
             .fillMaxSize()
     ) {
-        UserFilterSection()
-        Spacer(modifier = Modifier.height(8.dp))
-        LatestPostsSection()
+        when (uiState) {
+            is UiState.Success -> {
+                UserFilterSection(items = (uiState as UiState.Success).usersFilter)
+                Spacer(modifier = Modifier.height(8.dp))
+                LatestPostsSection(items = (uiState as UiState.Success).posts)
+            }
+
+            is UiState.Loading -> {
+                Text("Loading...")
+            }
+
+            is UiState.Error -> {
+                Text(text = "Error: ${(uiState as UiState.Error).error}")
+            }
+        }
     }
 }
 
@@ -560,7 +604,7 @@ private fun UserFilterListPreview() {
 @Composable
 private fun UserFilterSectionPreview() {
     PlaceHolderSocialTheme {
-        UserFilterSection()
+        UserFilterSection(items = userFilterList)
     }
 }
 
@@ -635,7 +679,7 @@ private fun PostCardListPreview() {
 @Composable
 private fun LatestPostsSectionPreview() {
     PlaceHolderSocialTheme {
-        LatestPostsSection()
+        LatestPostsSection(items = usersPosts)
     }
 }
 
@@ -707,3 +751,171 @@ val userFilterList = listOf(UserFilter(null)) + usersPosts.map { UserFilter(it.u
 // Constants
 const val screenWidth = 360
 const val screenHeight = 800
+
+// Network layer
+@Serializable
+data class UserApiModel(val id: Int, val name: String, val username: String)
+
+@Serializable
+data class PostApiModel(val userId: Int, val id: Int, val title: String, val body: String)
+
+@Serializable
+data class CommentApiModel(val postId: Int)
+
+interface PlaceholderApiService {
+    @GET("users")
+    suspend fun getUsers(): List<UserApiModel>
+
+    @GET("posts")
+    suspend fun getPosts(): List<PostApiModel>
+
+    @GET("comments")
+    suspend fun getComments(): List<CommentApiModel>
+}
+
+object PlaceholderApi {
+    private const val BASE_URL =
+        "https://jsonplaceholder.typicode.com/"
+
+    private val json = Json { ignoreUnknownKeys = true }
+
+    private val retrofit = Retrofit.Builder()
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+        .baseUrl(BASE_URL).build()
+
+    val retrofitService: PlaceholderApiService by lazy { retrofit.create(PlaceholderApiService::class.java) }
+}
+
+interface DataSource {
+    suspend fun getUsers(): List<UserApiModel>
+
+    suspend fun getPosts(): List<PostApiModel>
+    suspend fun getComments(): List<CommentApiModel>
+}
+
+class RemoteDataSource(val retrofitService: PlaceholderApiService) : DataSource {
+    override suspend fun getUsers(): List<UserApiModel> {
+        return retrofitService.getUsers()
+    }
+
+    override suspend fun getPosts(): List<PostApiModel> {
+        return retrofitService.getPosts()
+    }
+
+    override suspend fun getComments(): List<CommentApiModel> {
+        return retrofitService.getComments()
+    }
+}
+
+class LocalDataSource : DataSource {
+    override suspend fun getUsers(): List<UserApiModel> {
+        return emptyList()
+    }
+
+    override suspend fun getPosts(): List<PostApiModel> {
+        return emptyList()
+    }
+
+    override suspend fun getComments(): List<CommentApiModel> {
+        return emptyList()
+    }
+}
+
+// Repository Layer
+
+data class UserModel(val id: Int, val name: String, val username: String)
+
+data class PostModel(val userId: Int, val id: Int, val title: String, val body: String)
+
+data class CommentModel(val postId: Int)
+
+interface PlaceholderRepository {
+    suspend fun getUsers(): List<UserModel>
+
+    suspend fun getPosts(): List<PostModel>
+    suspend fun getComments(): List<CommentModel>
+}
+
+class PlaceholderRepositoryImpl(
+    val localDataSource: LocalDataSource,
+    val remoteDataSource: RemoteDataSource
+) : PlaceholderRepository {
+    override suspend fun getUsers(): List<UserModel> {
+        var data = localDataSource.getUsers()
+        if (data.isEmpty()) {
+            data = remoteDataSource.getUsers()
+        }
+        return data.map {
+            UserModel(
+                id = it.id,
+                name = it.name,
+                username = it.username
+            )
+        }
+    }
+
+    override suspend fun getPosts(): List<PostModel> {
+        var data = localDataSource.getPosts()
+        if (data.isEmpty()) {
+            data = remoteDataSource.getPosts()
+        }
+        return data.map {
+            PostModel(
+                userId = it.userId,
+                id = it.id,
+                title = it.title,
+                body = it.body
+            )
+        }
+    }
+
+    override suspend fun getComments(): List<CommentModel> {
+        var data = localDataSource.getComments()
+        if (data.isEmpty()) {
+            data = remoteDataSource.getComments()
+        }
+        return data.map {
+            CommentModel(
+                postId = it.postId
+            )
+        }
+    }
+}
+
+sealed interface UiState {
+    data class Success(val usersFilter: List<UserFilter>, val posts: List<Post>) : UiState
+    object Loading : UiState
+    data class Error(val error: String) : UiState
+}
+
+
+class PlaceholderViewModel(val repository: PlaceholderRepository) : ViewModel() {
+    private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState.Loading)
+    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            try {
+                val users = repository.getUsers()
+                val userFilters = users.map { UserFilter(userName = it.username) }
+                val comments = repository.getComments()
+                val posts = repository.getPosts().map {
+                    Post(
+                        userName = users.find { user -> user.id == it.userId }?.name ?: "",
+                        userHandle = users.find { user -> user.id == it.userId }?.username ?: "",
+                        postTitle = it.title,
+                        postBody = it.body,
+                        comments = comments.count { comment -> comment.postId == it.id },
+                        isBookmarked = false
+                    )
+                }
+                _uiState.value = UiState.Success(
+                    usersFilter = userFilters,
+                    posts = posts
+                )
+            } catch (e: IOException) {
+                _uiState.value = UiState.Error(e.toString())
+            }
+        }
+    }
+}
