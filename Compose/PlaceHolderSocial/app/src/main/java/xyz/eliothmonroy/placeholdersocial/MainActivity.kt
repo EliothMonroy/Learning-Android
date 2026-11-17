@@ -75,6 +75,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -351,7 +352,7 @@ fun PostCardList(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         contentPadding = PaddingValues(bottom = 16.dp)
     ) {
-        items(postList) { post ->
+        items(items = postList, key = { it.id }) { post ->
             PostCard(post = post)
         }
     }
@@ -387,11 +388,11 @@ fun HomeScreen(
         modifier = modifier
             .fillMaxSize()
     ) {
-        when (uiState) {
+        when (val state = uiState) {
             is UiState.Success -> {
-                UserFilterSection(items = (uiState as UiState.Success).usersFilter)
+                UserFilterSection(items = state.usersFilter)
                 Spacer(modifier = Modifier.height(8.dp))
-                LatestPostsSection(items = (uiState as UiState.Success).posts)
+                LatestPostsSection(items = state.posts)
             }
 
             is UiState.Loading -> {
@@ -399,7 +400,7 @@ fun HomeScreen(
             }
 
             is UiState.Error -> {
-                Text(text = "Error: ${(uiState as UiState.Error).error}")
+                Text(text = "Error: $state.error}")
             }
         }
     }
@@ -689,16 +690,18 @@ private fun LatestPostsSectionPreview() {
 data class UserFilter(val userName: String?)
 
 data class Post(
+    val id: Int,
     val userName: String,
     val userHandle: String,
     val postTitle: String,
     val postBody: String,
     val comments: Int,
-    val isBookmarked: Boolean
+    var isBookmarked: Boolean
 )
 
 val usersPosts = listOf(
     Post(
+        id = 1,
         userName = "Elioth",
         userHandle = "elioth",
         postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -707,6 +710,7 @@ val usersPosts = listOf(
         isBookmarked = false
     ),
     Post(
+        id = 2,
         userName = "Sandy",
         userHandle = "sandy",
         postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -715,6 +719,7 @@ val usersPosts = listOf(
         isBookmarked = false
     ),
     Post(
+        id = 3,
         userName = "Paco",
         userHandle = "paqui",
         postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -723,6 +728,7 @@ val usersPosts = listOf(
         isBookmarked = false
     ),
     Post(
+        id = 4,
         userName = "Winnie",
         userHandle = "wais",
         postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -731,6 +737,7 @@ val usersPosts = listOf(
         isBookmarked = false
     ),
     Post(
+        id = 5,
         userName = "Oli",
         userHandle = "oli",
         postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -739,6 +746,7 @@ val usersPosts = listOf(
         isBookmarked = false
     ),
     Post(
+        id = 6,
         userName = "Cristiano",
         userHandle = "cr7",
         postTitle = "Sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -895,17 +903,30 @@ class PlaceholderViewModel(
     val repository: PlaceholderRepository,
     dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
+
+    private var users = emptyList<UserModel>()
+
+    private var comments = emptyList<CommentModel>()
+
+    private var posts = emptyList<PostModel>()
+
+    private var userFilters = emptyList<UserFilter>()
+
+    private var postsList = emptyList<Post>()
+
     private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch(dispatcher) {
             try {
-                val users = repository.getUsers()
-                val userFilters = users.map { UserFilter(userName = it.username) }
-                val comments = repository.getComments()
-                val posts = repository.getPosts().map {
+                users = repository.getUsers()
+                comments = repository.getComments()
+                posts = repository.getPosts()
+                userFilters = users.map { UserFilter(userName = it.username) }
+                postsList = posts.map {
                     Post(
+                        id = it.id,
                         userName = users.find { user -> user.id == it.userId }?.name ?: "",
                         userHandle = users.find { user -> user.id == it.userId }?.username ?: "",
                         postTitle = it.title,
@@ -916,11 +937,19 @@ class PlaceholderViewModel(
                 }
                 _uiState.value = UiState.Success(
                     usersFilter = userFilters,
-                    posts = posts
+                    posts = postsList
                 )
             } catch (e: IOException) {
                 _uiState.value = UiState.Error(e.toString())
             }
         }
     }
+
+    fun bookmarkPost(postId: Int, isBookmarked: Boolean) {
+        postsList.find { it.id == postId }?.isBookmarked = isBookmarked
+        _uiState.update { currentState ->
+            (currentState as UiState.Success).copy(posts = postsList)
+        }
+    }
+
 }
