@@ -219,12 +219,15 @@ fun CommentsChip(
 @Composable
 fun Bookmark(
     modifier: Modifier = Modifier,
-    isSelected: Boolean = false
+    isSelected: Boolean = false,
+    onPostBookmarked: (Boolean) -> Unit
 ) {
     IconToggleButton(
         modifier = modifier.size(48.dp),
         checked = isSelected,
-        onCheckedChange = {}
+        onCheckedChange = { value ->
+            onPostBookmarked(value)
+        }
     ) {
         Icon(
             imageVector = if (isSelected) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
@@ -237,7 +240,8 @@ fun Bookmark(
 fun PostCardFooter(
     modifier: Modifier = Modifier,
     comments: Int = 0,
-    isBookmarked: Boolean = false
+    isBookmarked: Boolean = false,
+    onPostBookmarked: (Boolean) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -247,7 +251,7 @@ fun PostCardFooter(
         verticalAlignment = Alignment.CenterVertically
     ) {
         CommentsChip(numberOfComments = comments)
-        Bookmark(isSelected = isBookmarked)
+        Bookmark(isSelected = isBookmarked, onPostBookmarked = onPostBookmarked)
     }
 }
 
@@ -313,7 +317,8 @@ fun PostCardBody(
 @Composable
 fun PostCard(
     modifier: Modifier = Modifier,
-    post: Post
+    post: Post,
+    onPostBookmarked: (Int, Boolean) -> Unit
 ) {
     OutlinedCard(
         modifier = modifier
@@ -336,7 +341,8 @@ fun PostCard(
             )
             PostCardFooter(
                 comments = post.comments,
-                isBookmarked = post.isBookmarked
+                isBookmarked = post.isBookmarked,
+                onPostBookmarked = { value -> onPostBookmarked(post.id, value) }
             )
         }
     }
@@ -345,7 +351,8 @@ fun PostCard(
 @Composable
 fun PostCardList(
     modifier: Modifier = Modifier,
-    postList: List<Post>
+    postList: List<Post>,
+    onPostBookmarked: (Int, Boolean) -> Unit
 ) {
     LazyColumn(
         modifier = modifier.padding(start = 16.dp, end = 16.dp),
@@ -353,7 +360,7 @@ fun PostCardList(
         contentPadding = PaddingValues(bottom = 16.dp)
     ) {
         items(items = postList, key = { it.id }) { post ->
-            PostCard(post = post)
+            PostCard(post = post, onPostBookmarked = onPostBookmarked)
         }
     }
 }
@@ -361,11 +368,12 @@ fun PostCardList(
 @Composable
 fun LatestPostsSection(
     modifier: Modifier = Modifier,
-    items: List<Post>
+    items: List<Post>,
+    onPostBookmarked: (Int, Boolean) -> Unit
 ) {
     Column(modifier = modifier) {
         SectionHeader(title = "Latest posts")
-        PostCardList(postList = items)
+        PostCardList(postList = items, onPostBookmarked = onPostBookmarked)
     }
 }
 
@@ -392,7 +400,9 @@ fun HomeScreen(
             is UiState.Success -> {
                 UserFilterSection(items = state.usersFilter)
                 Spacer(modifier = Modifier.height(8.dp))
-                LatestPostsSection(items = state.posts)
+                LatestPostsSection(
+                    items = state.posts,
+                    onPostBookmarked = { postId, value -> viewModel.bookmarkPost(postId, value) })
             }
 
             is UiState.Loading -> {
@@ -631,7 +641,7 @@ private fun CommentsChipPreview() {
 @Composable
 private fun BookmarkPreview() {
     PlaceHolderSocialTheme {
-        Bookmark(isSelected = false)
+        Bookmark(isSelected = false, onPostBookmarked = {})
     }
 }
 
@@ -639,7 +649,7 @@ private fun BookmarkPreview() {
 @Composable
 private fun PostCardFooterPreview() {
     PlaceHolderSocialTheme {
-        PostCardFooter(comments = 5, isBookmarked = true)
+        PostCardFooter(comments = 5, isBookmarked = true, onPostBookmarked = {})
     }
 }
 
@@ -666,7 +676,7 @@ private fun PostCardBodyPreview() {
 @Composable
 private fun PostCardPreview() {
     PlaceHolderSocialTheme {
-        PostCard(post = usersPosts.first())
+        PostCard(post = usersPosts.first(), onPostBookmarked = { _, _ -> })
     }
 }
 
@@ -674,7 +684,7 @@ private fun PostCardPreview() {
 @Composable
 private fun PostCardListPreview() {
     PlaceHolderSocialTheme {
-        PostCardList(postList = usersPosts)
+        PostCardList(postList = usersPosts, onPostBookmarked = { _, _ -> })
     }
 }
 
@@ -682,7 +692,7 @@ private fun PostCardListPreview() {
 @Composable
 private fun LatestPostsSectionPreview() {
     PlaceHolderSocialTheme {
-        LatestPostsSection(items = usersPosts)
+        LatestPostsSection(items = usersPosts, onPostBookmarked = { _, _ -> })
     }
 }
 
@@ -696,7 +706,7 @@ data class Post(
     val postTitle: String,
     val postBody: String,
     val comments: Int,
-    var isBookmarked: Boolean
+    val isBookmarked: Boolean
 )
 
 val usersPosts = listOf(
@@ -946,10 +956,15 @@ class PlaceholderViewModel(
     }
 
     fun bookmarkPost(postId: Int, isBookmarked: Boolean) {
-        postsList.find { it.id == postId }?.isBookmarked = isBookmarked
-        _uiState.update { currentState ->
-            (currentState as UiState.Success).copy(posts = postsList)
+        _uiState.update { state ->
+            if (state !is UiState.Success) return@update state
+            state.copy(
+                posts = state.posts.map { post ->
+                    if (post.id == postId) {
+                        post.copy(isBookmarked = isBookmarked)
+                    } else post
+                }
+            )
         }
     }
-
 }
